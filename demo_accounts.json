@@ -1,0 +1,587 @@
+[
+  {
+    "id": "ACC-331641",
+    "score": 0.22,
+    "tier": "Watch",
+    "trend": [
+      0.22,
+      0.22,
+      0.22,
+      0.22,
+      0.22,
+      0.22
+    ],
+    "drivers": [
+      {
+        "label": "ID document has not changed recently",
+        "impact": 100,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "impact": 91,
+        "direction": "down"
+      },
+      {
+        "label": "Few recent credit checks by other lenders",
+        "impact": 84,
+        "direction": "down"
+      },
+      {
+        "label": "Above-average external credit score",
+        "impact": 70,
+        "direction": "down"
+      },
+      {
+        "label": "No history of major payment delays",
+        "impact": 59,
+        "direction": "down"
+      },
+      {
+        "label": "Low to moderate credit utilization",
+        "impact": 57,
+        "direction": "down"
+      },
+      {
+        "label": "Loan amount in line with item's value",
+        "impact": 52,
+        "direction": "down"
+      },
+      {
+        "label": "Phone number has not changed recently",
+        "impact": 43,
+        "direction": "down"
+      },
+      {
+        "label": "High-value item being financed",
+        "impact": 42,
+        "direction": "up"
+      },
+      {
+        "label": "Limited point-of-sale loan history",
+        "impact": 41,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-245992",
+    "score": 0.26,
+    "tier": "Watch",
+    "trend": [
+      0.26,
+      0.26,
+      0.26,
+      0.26,
+      0.26,
+      0.26
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "impact": 100,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "impact": 31,
+        "direction": "down"
+      },
+      {
+        "label": "No history of major payment delays",
+        "impact": 22,
+        "direction": "down"
+      },
+      {
+        "label": "Strong score from credit bureau (source 3)",
+        "impact": 18,
+        "direction": "down"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "impact": 16,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing more than the item's value",
+        "impact": 14,
+        "direction": "up"
+      },
+      {
+        "label": "Lower employed to age ratio",
+        "impact": 14,
+        "direction": "down"
+      },
+      {
+        "label": "Owns a car",
+        "impact": 13,
+        "direction": "down"
+      },
+      {
+        "label": "Strong history of loan approvals",
+        "impact": 12,
+        "direction": "down"
+      },
+      {
+        "label": "Limited point-of-sale loan history",
+        "impact": 9,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-244815",
+    "score": 0.2,
+    "tier": "Watch",
+    "trend": [
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "impact": 100,
+        "direction": "down"
+      },
+      {
+        "label": "Recent payments below amount due",
+        "impact": 18,
+        "direction": "up"
+      },
+      {
+        "label": "Strong score from credit bureau (source 3)",
+        "impact": 16,
+        "direction": "down"
+      },
+      {
+        "label": "Strong score from credit bureau (source 2)",
+        "impact": 15,
+        "direction": "down"
+      },
+      {
+        "label": "Lower ext source age",
+        "impact": 12,
+        "direction": "down"
+      },
+      {
+        "label": "High-value item being financed",
+        "impact": 12,
+        "direction": "up"
+      },
+      {
+        "label": "Few recent credit checks by other lenders",
+        "impact": 10,
+        "direction": "down"
+      },
+      {
+        "label": "Loan amount in line with item's value",
+        "impact": 10,
+        "direction": "down"
+      },
+      {
+        "label": "Recent change of contact phone number",
+        "impact": 9,
+        "direction": "up"
+      },
+      {
+        "label": "Lower hour appr process start",
+        "impact": 9,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-180202",
+    "score": 0.55,
+    "tier": "Nudge",
+    "trend": [
+      0.55,
+      0.55,
+      0.55,
+      0.55,
+      0.55,
+      0.55
+    ],
+    "drivers": [
+      {
+        "label": "Recent payments have matched amounts due",
+        "impact": 100,
+        "direction": "down"
+      },
+      {
+        "label": "Strong score from credit bureau (source 3)",
+        "impact": 94,
+        "direction": "down"
+      },
+      {
+        "label": "History of loan application rejections",
+        "impact": 84,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilization",
+        "impact": 67,
+        "direction": "up"
+      },
+      {
+        "label": "Few recent credit checks by other lenders",
+        "impact": 43,
+        "direction": "down"
+      },
+      {
+        "label": "Higher flag work phone",
+        "impact": 36,
+        "direction": "up"
+      },
+      {
+        "label": "Younger applicant",
+        "impact": 33,
+        "direction": "up"
+      },
+      {
+        "label": "Lower-rated region (city-adjusted)",
+        "impact": 31,
+        "direction": "up"
+      },
+      {
+        "label": "Higher ext source age",
+        "impact": 31,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing more than the item's value",
+        "impact": 31,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-399988",
+    "score": 0.39,
+    "tier": "Nudge",
+    "trend": [
+      0.39,
+      0.39,
+      0.39,
+      0.39,
+      0.39,
+      0.39
+    ],
+    "drivers": [
+      {
+        "label": "Loan size is modest relative to age",
+        "impact": 100,
+        "direction": "down"
+      },
+      {
+        "label": "Strong score from credit bureau (source 3)",
+        "impact": 96,
+        "direction": "down"
+      },
+      {
+        "label": "Owns a car",
+        "impact": 87,
+        "direction": "down"
+      },
+      {
+        "label": "Above-average external credit score",
+        "impact": 82,
+        "direction": "down"
+      },
+      {
+        "label": "ID document has not changed recently",
+        "impact": 72,
+        "direction": "down"
+      },
+      {
+        "label": "Lower-rated region (city-adjusted)",
+        "impact": 68,
+        "direction": "up"
+      },
+      {
+        "label": "Loan amount in line with item's value",
+        "impact": 58,
+        "direction": "down"
+      },
+      {
+        "label": "Strong history of loan approvals",
+        "impact": 50,
+        "direction": "down"
+      },
+      {
+        "label": "High-value item being financed",
+        "impact": 50,
+        "direction": "up"
+      },
+      {
+        "label": "Recent payments have matched amounts due",
+        "impact": 45,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-188337",
+    "score": 0.49,
+    "tier": "Nudge",
+    "trend": [
+      0.49,
+      0.49,
+      0.49,
+      0.49,
+      0.49,
+      0.49
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "impact": 100,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing more than the item's value",
+        "impact": 93,
+        "direction": "up"
+      },
+      {
+        "label": "Strong score from credit bureau (source 3)",
+        "impact": 62,
+        "direction": "down"
+      },
+      {
+        "label": "Established point-of-sale loan history",
+        "impact": 47,
+        "direction": "down"
+      },
+      {
+        "label": "Strong history of loan approvals",
+        "impact": 39,
+        "direction": "down"
+      },
+      {
+        "label": "Strong score from credit bureau (source 1)",
+        "impact": 39,
+        "direction": "down"
+      },
+      {
+        "label": "Owns a car",
+        "impact": 39,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "impact": 38,
+        "direction": "down"
+      },
+      {
+        "label": "High-value item being financed",
+        "impact": 37,
+        "direction": "up"
+      },
+      {
+        "label": "Manageable monthly repayment amount",
+        "impact": 33,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-115396",
+    "score": 0.83,
+    "tier": "Intervene",
+    "trend": [
+      0.83,
+      0.83,
+      0.83,
+      0.83,
+      0.83,
+      0.83
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "impact": 100,
+        "direction": "up"
+      },
+      {
+        "label": "Weak score from credit bureau (source 3)",
+        "impact": 31,
+        "direction": "up"
+      },
+      {
+        "label": "History of loan application rejections",
+        "impact": 30,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilization",
+        "impact": 23,
+        "direction": "up"
+      },
+      {
+        "label": "Lower declared income",
+        "impact": 18,
+        "direction": "up"
+      },
+      {
+        "label": "ID document has not changed recently",
+        "impact": 17,
+        "direction": "down"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "impact": 15,
+        "direction": "up"
+      },
+      {
+        "label": "No history of major payment delays",
+        "impact": 14,
+        "direction": "down"
+      },
+      {
+        "label": "Borrowing more than the item's value",
+        "impact": 11,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "impact": 9,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-429121",
+    "score": 0.65,
+    "tier": "Intervene",
+    "trend": [
+      0.65,
+      0.65,
+      0.65,
+      0.65,
+      0.65,
+      0.65
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "impact": 100,
+        "direction": "up"
+      },
+      {
+        "label": "Peak credit card utilization is low",
+        "impact": 22,
+        "direction": "down"
+      },
+      {
+        "label": "History of loan application rejections",
+        "impact": 22,
+        "direction": "up"
+      },
+      {
+        "label": "Loan amount in line with item's value",
+        "impact": 14,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "impact": 12,
+        "direction": "down"
+      },
+      {
+        "label": "Higher apartments avg",
+        "impact": 11,
+        "direction": "up"
+      },
+      {
+        "label": "Low average credit card utilization",
+        "impact": 10,
+        "direction": "down"
+      },
+      {
+        "label": "Few recent credit checks by other lenders",
+        "impact": 10,
+        "direction": "down"
+      },
+      {
+        "label": "Lower ext source min",
+        "impact": 10,
+        "direction": "down"
+      },
+      {
+        "label": "Limited point-of-sale loan history",
+        "impact": 9,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-154222",
+    "score": 0.65,
+    "tier": "Intervene",
+    "trend": [
+      0.65,
+      0.65,
+      0.65,
+      0.65,
+      0.65,
+      0.65
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "impact": 100,
+        "direction": "up"
+      },
+      {
+        "label": "Peak credit card utilization is low",
+        "impact": 30,
+        "direction": "down"
+      },
+      {
+        "label": "Loan amount in line with item's value",
+        "impact": 25,
+        "direction": "down"
+      },
+      {
+        "label": "Recent ID document change",
+        "impact": 20,
+        "direction": "up"
+      },
+      {
+        "label": "High-value item being financed",
+        "impact": 18,
+        "direction": "up"
+      },
+      {
+        "label": "Established point-of-sale loan history",
+        "impact": 17,
+        "direction": "down"
+      },
+      {
+        "label": "Younger applicant",
+        "impact": 17,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type higher education",
+        "impact": 16,
+        "direction": "down"
+      },
+      {
+        "label": "Lower ext source min",
+        "impact": 14,
+        "direction": "down"
+      },
+      {
+        "label": "Owns a car",
+        "impact": 12,
+        "direction": "down"
+      }
+    ]
+  }
+]

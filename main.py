@@ -21,6 +21,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from inference import RiskModel, assign_tier
+
 
 # ---------------------------------------------------------------------------
 # App setup
@@ -52,6 +54,51 @@ with open(DATA_PATH) as f:
     ACCOUNTS = json.load(f)
 
 ACCOUNTS_BY_ID = {a["id"]: a for a in ACCOUNTS}
+
+# Live model for the "what-if" slider (Path B). If the required files
+# aren't present, /api/predict and /api/sliders will return a 503 but
+# the rest of the API keeps working off the static demo data.
+try:
+    risk_model = RiskModel(Path(__file__).parent)
+except FileNotFoundError as e:
+    risk_model = None
+    print(f"Live model not loaded ({e}). /api/predict and /api/sliders disabled.")
+
+# UI-friendly slider definitions: label, units, and a sensible display
+# range. DEBT_TO_CREDIT_RATIO and INST_MAX_DAYS_LATE have long-tailed
+# raw distributions, so the UI range is narrower than the model's
+# observed min/max -- the model can still score values outside this
+# range, but the slider stays meaningful for a demo.
+SLIDER_DISPLAY = {
+    "DEBT_TO_CREDIT_RATIO": {
+        "label": "Credit utilization (debt to credit ratio)",
+        "min": 0.0,
+        "max": 1.5,
+        "step": 0.01,
+        "unit": "ratio",
+    },
+    "INST_MAX_DAYS_LATE": {
+        "label": "Worst payment delay (days late)",
+        "min": -30,
+        "max": 90,
+        "step": 1,
+        "unit": "days",
+    },
+    "EXT_SOURCE_MEAN": {
+        "label": "External credit bureau score",
+        "min": 0.0,
+        "max": 0.86,
+        "step": 0.01,
+        "unit": "score",
+    },
+    "CC_UTILITY_MEAN": {
+        "label": "Average credit card utilization",
+        "min": 0.0,
+        "max": 1.2,
+        "step": 0.01,
+        "unit": "ratio",
+    },
+}
 
 ACTIONS = {
     "Watch": {
@@ -121,6 +168,29 @@ class PortfolioSummary(BaseModel):
     tiers: dict[str, TierStat]
 
 
+class SliderDef(BaseModel):
+    feature: str
+    label: str
+    min: float
+    max: float
+    step: float
+    unit: str
+    current: float
+
+
+class PredictRequest(BaseModel):
+    account_id: str
+    overrides: dict[str, float] = {}
+
+
+class PredictResponse(BaseModel):
+    id: str
+    score: float
+    tier: str
+    drivers: list[Driver]
+    action: Action
+
+
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
@@ -130,10 +200,13 @@ def root():
     return {
         "service": "pre-delinquency-risk-scoring",
         "accounts_loaded": len(ACCOUNTS),
+        "live_model_loaded": risk_model is not None,
         "endpoints": [
             "/api/portfolio/summary",
             "/api/accounts",
             "/api/accounts/{account_id}",
+            "/api/sliders/{account_id}",
+            "/api/predict",
         ],
     }
 
@@ -200,4 +273,60 @@ def get_account(account_id: str):
         trend=account["trend"],
         drivers=[Driver(**d) for d in account["drivers"]],
         action=Action(**ACTIONS[account["tier"]]),
+    )
+
+
+@app.get("/api/sliders/{account_id}", response_model=list[SliderDef])
+def get_sliders(account_id: str):
+    """
+    Slider definitions for the what-if panel, with the account's current
+    value for each slider feature pre-filled.
+    """
+    if risk_model is None:
+        raise HTTPException(status_code=503, detail="Live model not available")
+
+    if account_id not in risk_model.baselines:
+        raise HTTPException(status_code=404, detail="Account not found")
+
+    vector = risk_model.baselines[account_id]
+
+    sliders = []
+    for feature, display in SLIDER_DISPLAY.items():
+        idx = risk_model.feature_index.get(feature)
+        current = float(vector[idx]) if idx is not None else display["min"]
+        sliders.append(SliderDef(
+            feature=feature,
+            label=display["label"],
+            min=display["min"],
+            max=display["max"],
+            step=display["step"],
+            unit=display["unit"],
+            current=current,
+        ))
+
+    return sliders
+
+
+@app.post("/api/predict", response_model=PredictResponse)
+def predict(req: PredictRequest):
+    """
+    Recompute score, tier, and drivers for an account with the given
+    feature overrides applied (live "what-if" inference).
+    """
+    if risk_model is None:
+        raise HTTPException(status_code=503, detail="Live model not available")
+
+    result = risk_model.predict(req.account_id, overrides=req.overrides)
+    if result is None:
+        raise HTTPException(status_code=404, detail="Account not found")
+
+    score, drivers = result
+    tier = assign_tier(score)
+
+    return PredictResponse(
+        id=req.account_id,
+        score=round(score, 2),
+        tier=tier,
+        drivers=[Driver(**d) for d in drivers],
+        action=Action(**ACTIONS[tier]),
     )

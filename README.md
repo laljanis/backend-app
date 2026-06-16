@@ -16,6 +16,10 @@ uvicorn main:app --reload
 API is available at `http://localhost:8000`  
 Interactive docs at `http://localhost:8000/docs`
 
+Set `GOOGLE_API_KEY` (an AI Studio key) to enable the Gemini-backed
+`recommendations` field on `/api/accounts/{account_id}`. Without it, the
+field is just an empty list and the rest of the API is unaffected.
+
 ## API Reference
 
 ### `GET /`
@@ -94,9 +98,23 @@ Full detail for a single account including all SHAP drivers and the recommended 
   "action": {
     "title": "Escalate for outreach",
     "detail": "Route to a collections specialist for a call..."
-  }
+  },
+  "recommendations": [
+    {
+      "title": "Offer a restructuring plan before next due date",
+      "priority": "Critical",
+      "reduction": "8-12%",
+      "confidence": "87%",
+      "category": "payment"
+    }
+  ]
 }
 ```
+
+`recommendations` is generated per-account by a Gemini-backed agent
+(`gemini-flash-lite-latest`, see `recommendations_agent.py`), grounded in
+the account's score/tier/SHAP drivers, and cached server-side for 30
+minutes per account. It's an empty list if `GOOGLE_API_KEY` isn't set.
 
 Returns `404` if the account ID is not found.
 

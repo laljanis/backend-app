@@ -13,16 +13,22 @@ Then the API is available at http://localhost:8000
 Interactive docs at http://localhost:8000/docs
 """
 
+import base64
+import hashlib
+import hmac
 import json
 import os
+import secrets
+import time
 from pathlib import Path
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Cookie, Depends, FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from inference import RiskModel, assign_tier
+from recommendations_agent import RecommendationAgent, RecommendationItem
 
 
 # ---------------------------------------------------------------------------
@@ -82,14 +88,112 @@ except FileNotFoundError as e:
     risk_model = None
     print(f"Live model not loaded ({e}). /api/predict and /api/sliders disabled.")
 
+# Gemini-backed "next best action" recommendations (Path C). Requires
+# GOOGLE_API_KEY; falls back to an empty recommendations list otherwise.
+try:
+    if not os.getenv("GOOGLE_API_KEY"):
+        raise RuntimeError("GOOGLE_API_KEY is not set")
+    recommendation_agent = RecommendationAgent()
+except Exception as e:
+    recommendation_agent = None
+    print(f"Recommendation agent not loaded ({e}). Recommendations will be empty.")
+
 # demo_accounts.json / the dashboard use "ACC-<SK_ID_CURR>" ids, but the live
 # model's baseline vectors are keyed by the raw SK_ID_CURR. Strip the prefix
 # before looking anything up against risk_model.
 ACCOUNT_ID_PREFIX = "ACC-"
+PIN_HASH_ENV = "PIN_LOCK_HASH"
+PIN_SESSION_COOKIE = "pin_session"
+PIN_SESSION_TTL_SECONDS = int(os.getenv("PIN_SESSION_TTL_SECONDS", "28800"))
+PIN_MAX_ATTEMPTS = int(os.getenv("PIN_MAX_ATTEMPTS", "5"))
+PIN_LOCKOUT_SECONDS = int(os.getenv("PIN_LOCKOUT_SECONDS", "300"))
+PIN_HASH_PREFIX = "pbkdf2_sha256"
+PIN_HASH_ITERATIONS = 310_000
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
+_SESSIONS: dict[str, float] = {}
+_FAILED_ATTEMPTS: dict[str, dict[str, float | int]] = {}
 
 
 def to_raw_id(account_id: str) -> str:
     return account_id.removeprefix(ACCOUNT_ID_PREFIX)
+
+
+def _client_key() -> str:
+    # This app is commonly served through a local proxy/ngrok tunnel; use a
+    # single conservative bucket so lockout cannot be bypassed by header spoofing.
+    return "global"
+
+
+def _pin_hash_config() -> str | None:
+    value = os.getenv(PIN_HASH_ENV, "").strip()
+    return value or None
+
+
+def _hash_pin(pin: str, salt: bytes, iterations: int = PIN_HASH_ITERATIONS) -> bytes:
+    return hashlib.pbkdf2_hmac("sha256", pin.encode("utf-8"), salt, iterations)
+
+
+def _verify_pin(pin: str) -> bool:
+    encoded_hash = _pin_hash_config()
+    if not encoded_hash:
+        raise HTTPException(status_code=503, detail="PIN lock is not configured")
+
+    try:
+        algorithm, iterations_raw, salt_raw, digest_raw = encoded_hash.split("$", 3)
+        if algorithm != PIN_HASH_PREFIX:
+            raise ValueError("Unsupported PIN hash algorithm")
+        iterations = int(iterations_raw)
+        salt = base64.b64decode(salt_raw)
+        expected = base64.b64decode(digest_raw)
+    except (ValueError, TypeError):
+        raise HTTPException(status_code=500, detail="Invalid PIN hash configuration")
+
+    actual = _hash_pin(pin, salt, iterations)
+    return hmac.compare_digest(actual, expected)
+
+
+def _failed_attempt_state() -> dict[str, float | int]:
+    key = _client_key()
+    state = _FAILED_ATTEMPTS.setdefault(key, {"count": 0, "locked_until": 0.0})
+    locked_until = float(state.get("locked_until", 0.0))
+    if locked_until and locked_until <= time.time():
+        state["count"] = 0
+        state["locked_until"] = 0.0
+    return state
+
+
+def _register_failed_attempt() -> None:
+    state = _failed_attempt_state()
+    state["count"] = int(state.get("count", 0)) + 1
+    if int(state["count"]) >= PIN_MAX_ATTEMPTS:
+        state["locked_until"] = time.time() + PIN_LOCKOUT_SECONDS
+
+
+def _clear_failed_attempts() -> None:
+    _FAILED_ATTEMPTS.pop(_client_key(), None)
+
+
+def _active_session(session_id: str | None) -> bool:
+    if not session_id:
+        return False
+
+    expires_at = _SESSIONS.get(session_id)
+    if not expires_at:
+        return False
+
+    if expires_at <= time.time():
+        _SESSIONS.pop(session_id, None)
+        return False
+
+    return True
+
+
+def require_pin_session(pin_session: str | None = Cookie(default=None)) -> None:
+    if not _pin_hash_config():
+        raise HTTPException(status_code=503, detail="PIN lock is not configured")
+
+    if not _active_session(pin_session):
+        raise HTTPException(status_code=401, detail="PIN verification required")
 
 
 ACTIONS = {
@@ -150,6 +254,7 @@ class AccountDetail(BaseModel):
     trend: list[float]
     drivers: list[Driver]
     action: Action
+    recommendations: list[RecommendationItem] = []
 
 
 class TierStat(BaseModel):
@@ -190,6 +295,16 @@ class PredictResponse(BaseModel):
     action: Action
 
 
+class PinLoginRequest(BaseModel):
+    pin: str
+
+
+class AuthStatus(BaseModel):
+    authenticated: bool
+    configured: bool
+    lockout_seconds_remaining: int = 0
+
+
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
@@ -200,17 +315,77 @@ def root():
         "service": "pre-delinquency-risk-scoring",
         "accounts_loaded": len(ACCOUNTS),
         "live_model_loaded": risk_model is not None,
+        "recommendation_agent_loaded": recommendation_agent is not None,
         "endpoints": [
             "/api/portfolio/summary",
             "/api/accounts",
             "/api/accounts/{account_id}",
             "/api/sliders/{account_id}",
             "/api/predict",
+            "/api/auth/status",
+            "/api/auth/pin",
         ],
     }
 
 
-@app.get("/api/portfolio/summary", response_model=PortfolioSummary)
+@app.get("/api/auth/status", response_model=AuthStatus)
+def auth_status(pin_session: str | None = Cookie(default=None)):
+    state = _failed_attempt_state()
+    lockout_remaining = max(0, round(float(state.get("locked_until", 0.0)) - time.time()))
+    return AuthStatus(
+        authenticated=_active_session(pin_session),
+        configured=_pin_hash_config() is not None,
+        lockout_seconds_remaining=lockout_remaining,
+    )
+
+
+@app.post("/api/auth/pin", response_model=AuthStatus)
+def verify_pin(req: PinLoginRequest, response: Response):
+    if not req.pin.isdigit() or len(req.pin) != 4:
+        _register_failed_attempt()
+        raise HTTPException(status_code=400, detail="Enter a valid 4-digit PIN")
+
+    state = _failed_attempt_state()
+    locked_until = float(state.get("locked_until", 0.0))
+    if locked_until > time.time():
+        remaining = round(locked_until - time.time())
+        raise HTTPException(
+            status_code=429,
+            detail=f"Too many incorrect attempts. Try again in {remaining} seconds.",
+        )
+
+    if not _verify_pin(req.pin):
+        _register_failed_attempt()
+        remaining_attempts = max(0, PIN_MAX_ATTEMPTS - int(state.get("count", 0)))
+        detail = "Incorrect PIN"
+        if remaining_attempts:
+            detail = f"Incorrect PIN. {remaining_attempts} attempts remaining."
+        raise HTTPException(status_code=401, detail=detail)
+
+    _clear_failed_attempts()
+    session_id = secrets.token_urlsafe(32)
+    _SESSIONS[session_id] = time.time() + PIN_SESSION_TTL_SECONDS
+    response.set_cookie(
+        key=PIN_SESSION_COOKIE,
+        value=session_id,
+        max_age=PIN_SESSION_TTL_SECONDS,
+        httponly=True,
+        secure=os.getenv("PIN_COOKIE_SECURE", "false").lower() == "true",
+        samesite="lax",
+    )
+
+    return AuthStatus(authenticated=True, configured=True)
+
+
+@app.post("/api/auth/logout", response_model=AuthStatus)
+def logout(response: Response, pin_session: str | None = Cookie(default=None)):
+    if pin_session:
+        _SESSIONS.pop(pin_session, None)
+    response.delete_cookie(PIN_SESSION_COOKIE, httponly=True, samesite="lax")
+    return AuthStatus(authenticated=False, configured=_pin_hash_config() is not None)
+
+
+@app.get("/api/portfolio/summary", response_model=PortfolioSummary, dependencies=[Depends(require_pin_session)])
 def portfolio_summary():
     """Counts and percentages per tier, for the top stat cards."""
     tier_counts = {"Watch": 0, "Nudge": 0, "Intervene": 0}
@@ -230,7 +405,7 @@ def portfolio_summary():
     )
 
 
-@app.get("/api/accounts", response_model=list[AccountSummary])
+@app.get("/api/accounts", response_model=list[AccountSummary], dependencies=[Depends(require_pin_session)])
 def list_accounts(tier: Optional[str] = None):
     """
     Account queue for the dashboard table.
@@ -262,12 +437,18 @@ def list_accounts(tier: Optional[str] = None):
     ]
 
 
-@app.get("/api/accounts/{account_id}", response_model=AccountDetail)
-def get_account(account_id: str):
+@app.get("/api/accounts/{account_id}", response_model=AccountDetail, dependencies=[Depends(require_pin_session)])
+async def get_account(account_id: str):
     """Full detail for one account: score, trend, drivers, recommended action."""
     account = ACCOUNTS_BY_ID.get(account_id)
     if account is None:
         raise HTTPException(status_code=404, detail="Account not found")
+
+    recommendations = (
+        await recommendation_agent.get_recommendations(account)
+        if recommendation_agent is not None
+        else []
+    )
 
     return AccountDetail(
         id=account["id"],
@@ -276,10 +457,11 @@ def get_account(account_id: str):
         trend=account["trend"],
         drivers=[Driver(**d) for d in account["drivers"]],
         action=Action(**ACTIONS[account["tier"]]),
+        recommendations=[RecommendationItem(**r) for r in recommendations],
     )
 
 
-@app.get("/api/sliders/{account_id}", response_model=list[SliderDef])
+@app.get("/api/sliders/{account_id}", response_model=list[SliderDef], dependencies=[Depends(require_pin_session)])
 def get_sliders(account_id: str):
     """
     Slider definitions for the what-if panel, with the account's current
@@ -311,7 +493,7 @@ def get_sliders(account_id: str):
     return sliders
 
 
-@app.post("/api/predict", response_model=PredictResponse)
+@app.post("/api/predict", response_model=PredictResponse, dependencies=[Depends(require_pin_session)])
 def predict(req: PredictRequest):
     """
     Recompute score, tier, and drivers for an account with the given

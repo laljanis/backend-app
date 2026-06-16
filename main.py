@@ -22,7 +22,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from inference import RiskModel
+from inference import RiskModel, assign_tier
 
 
 # ---------------------------------------------------------------------------
@@ -62,14 +62,16 @@ DATA_PATH = Path(__file__).parent / "demo_accounts.json"
 with open(DATA_PATH) as f:
     ACCOUNTS = json.load(f)
 
-ACCOUNTS_BY_ID = {a["id"]: a for a in ACCOUNTS}
-
-# Tier thresholds, loaded independently of the live model so they're always
-# available to /api/portfolio/summary even if model artifacts are missing.
 with open(Path(__file__).parent / "tier_config.json") as f:
     _TIER_CONFIG = json.load(f)
 NUDGE_THRESHOLD = _TIER_CONFIG["nudge_threshold"]
 INTERVENE_THRESHOLD = _TIER_CONFIG["intervene_threshold"]
+
+# Reassign tiers dynamically based on the configured thresholds to ensure consistency
+for account in ACCOUNTS:
+    account["tier"] = assign_tier(account["score"], NUDGE_THRESHOLD, INTERVENE_THRESHOLD)
+
+ACCOUNTS_BY_ID = {a["id"]: a for a in ACCOUNTS}
 
 # Live model for the "what-if" slider (Path B). If the required files
 # aren't present, /api/predict and /api/sliders will return a 503 but

@@ -1,6 +1,6 @@
 {
-  "nudge_threshold": 0.045664160401002504,
-  "intervene_threshold": 0.09132832080200501,
+  "nudge_threshold": 0.30,
+  "intervene_threshold": 0.48,
   "fp_cost": 1,
   "fn_cost": 10
 }

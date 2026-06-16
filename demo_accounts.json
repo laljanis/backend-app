@@ -1,585 +1,5100 @@
 [
   {
-    "id": "ACC-331641",
-    "score": 0.22,
-    "tier": "Watch",
+    "id": "ACC-293721",
+    "score": 0.603,
+    "tier": "Intervene",
     "trend": [
-      0.22,
-      0.22,
-      0.22,
-      0.22,
-      0.22,
-      0.22
+      0.603,
+      0.603,
+      0.603,
+      0.603,
+      0.603,
+      0.603
     ],
     "drivers": [
       {
-        "label": "ID document has not changed recently",
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
         "impact": 100,
-        "direction": "down"
-      },
-      {
-        "label": "Credit score solid relative to employment history",
-        "impact": 91,
-        "direction": "down"
-      },
-      {
-        "label": "Few recent credit checks by other lenders",
-        "impact": 84,
-        "direction": "down"
-      },
-      {
-        "label": "Above-average external credit score",
-        "impact": 70,
-        "direction": "down"
-      },
-      {
-        "label": "No history of major payment delays",
-        "impact": 59,
-        "direction": "down"
-      },
-      {
-        "label": "Low to moderate credit utilization",
-        "impact": 57,
-        "direction": "down"
-      },
-      {
-        "label": "Loan amount in line with item's value",
-        "impact": 52,
-        "direction": "down"
-      },
-      {
-        "label": "Phone number has not changed recently",
-        "impact": 43,
-        "direction": "down"
-      },
-      {
-        "label": "High-value item being financed",
-        "impact": 42,
+        "shap": 0.788903,
         "direction": "up"
       },
       {
-        "label": "Limited point-of-sale loan history",
-        "impact": 41,
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 40,
+        "shap": 0.316891,
         "direction": "up"
-      }
-    ]
-  },
-  {
-    "id": "ACC-245992",
-    "score": 0.26,
-    "tier": "Watch",
-    "trend": [
-      0.26,
-      0.26,
-      0.26,
-      0.26,
-      0.26,
-      0.26
-    ],
-    "drivers": [
-      {
-        "label": "Above-average external credit score",
-        "impact": 100,
-        "direction": "down"
       },
       {
-        "label": "Credit score solid relative to employment history",
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 34,
+        "shap": 0.27074,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
         "impact": 31,
-        "direction": "down"
-      },
-      {
-        "label": "No history of major payment delays",
-        "impact": 22,
-        "direction": "down"
-      },
-      {
-        "label": "Strong score from credit bureau (source 3)",
-        "impact": 18,
-        "direction": "down"
-      },
-      {
-        "label": "High monthly repayment amount",
-        "impact": 16,
+        "shap": 0.246085,
         "direction": "up"
       },
       {
-        "label": "Borrowing more than the item's value",
-        "impact": 14,
+        "label": "Combined external credit signals are weak",
+        "feature": "EXT_PROD",
+        "impact": 24,
+        "shap": 0.188234,
         "direction": "up"
       },
       {
-        "label": "Lower employed to age ratio",
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 23,
+        "shap": 0.18066,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 17,
+        "shap": 0.132961,
+        "direction": "up"
+      },
+      {
+        "label": "Many active bureau loans",
+        "feature": "BUR_ACTIVE_COUNT",
         "impact": 14,
-        "direction": "down"
+        "shap": 0.108343,
+        "direction": "up"
       },
       {
-        "label": "Owns a car",
-        "impact": 13,
-        "direction": "down"
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 11,
+        "shap": 0.088976,
+        "direction": "up"
       },
       {
-        "label": "Strong history of loan approvals",
-        "impact": 12,
-        "direction": "down"
-      },
-      {
-        "label": "Limited point-of-sale loan history",
-        "impact": 9,
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 11,
+        "shap": 0.084741,
         "direction": "up"
       }
     ]
   },
   {
-    "id": "ACC-244815",
-    "score": 0.2,
-    "tier": "Watch",
+    "id": "ACC-196682",
+    "score": 0.4675,
+    "tier": "Intervene",
     "trend": [
-      0.2,
-      0.2,
-      0.2,
-      0.2,
-      0.2,
-      0.2
+      0.4675,
+      0.4675,
+      0.4675,
+      0.4675,
+      0.4675,
+      0.4675
     ],
     "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.806182,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 35,
+        "shap": 0.282836,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 29,
+        "shap": 0.235821,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 28,
+        "shap": -0.224374,
+        "direction": "down"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 21,
+        "shap": 0.168202,
+        "direction": "up"
+      },
+      {
+        "label": "Combined external credit signals are weak",
+        "feature": "EXT_PROD",
+        "impact": 21,
+        "shap": 0.165469,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 19,
+        "shap": 0.152854,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 15,
+        "shap": 0.120561,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 14,
+        "shap": 0.111618,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 11,
+        "shap": 0.088368,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-444325",
+    "score": 0.4675,
+    "tier": "Intervene",
+    "trend": [
+      0.4675,
+      0.4675,
+      0.4675,
+      0.4675,
+      0.4675,
+      0.4675
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.707001,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 29,
+        "shap": 0.206892,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 25,
+        "shap": 0.178676,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 23,
+        "shap": 0.159912,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 20,
+        "shap": 0.13991,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 18,
+        "shap": 0.127633,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 17,
+        "shap": 0.123327,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 16,
+        "shap": 0.113075,
+        "direction": "up"
+      },
+      {
+        "label": "Higher region rating client w city",
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "impact": 15,
+        "shap": 0.105113,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev days mean",
+        "feature": "PREV_DAYS_MEAN",
+        "impact": 12,
+        "shap": 0.082723,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-262363",
+    "score": 0.442,
+    "tier": "Intervene",
+    "trend": [
+      0.442,
+      0.442,
+      0.442,
+      0.442,
+      0.442,
+      0.442
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.756234,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 42,
+        "shap": 0.314878,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 38,
+        "shap": 0.289073,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 33,
+        "shap": 0.247479,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 25,
+        "shap": 0.187219,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 24,
+        "shap": 0.180357,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 19,
+        "shap": 0.143119,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 18,
+        "shap": 0.133216,
+        "direction": "up"
+      },
+      {
+        "label": "Higher region rating client w city",
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "impact": 13,
+        "shap": 0.099601,
+        "direction": "up"
+      },
+      {
+        "label": "ID document has been stable",
+        "feature": "ID_RECENCY",
+        "impact": 13,
+        "shap": -0.097557,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-369473",
+    "score": 0.3932,
+    "tier": "Intervene",
+    "trend": [
+      0.3932,
+      0.3932,
+      0.3932,
+      0.3932,
+      0.3932,
+      0.3932
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.630505,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 44,
+        "shap": 0.277456,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 35,
+        "shap": -0.223461,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 34,
+        "shap": 0.216785,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 29,
+        "shap": 0.183135,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 27,
+        "shap": 0.170568,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 26,
+        "shap": 0.165282,
+        "direction": "up"
+      },
+      {
+        "label": "Combined external credit signals are weak",
+        "feature": "EXT_PROD",
+        "impact": 23,
+        "shap": 0.146288,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 22,
+        "shap": 0.138043,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 19,
+        "shap": 0.121617,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-281173",
+    "score": 0.3932,
+    "tier": "Intervene",
+    "trend": [
+      0.3932,
+      0.3932,
+      0.3932,
+      0.3932,
+      0.3932,
+      0.3932
+    ],
+    "drivers": [
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 100,
+        "shap": 0.233963,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 75,
+        "shap": 0.176004,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 69,
+        "shap": 0.16152,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 63,
+        "shap": 0.147832,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 59,
+        "shap": 0.138544,
+        "direction": "up"
+      },
+      {
+        "label": "Recent ID document change",
+        "feature": "ID_RECENCY",
+        "impact": 57,
+        "shap": 0.132843,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 55,
+        "shap": 0.128103,
+        "direction": "up"
+      },
+      {
+        "label": "Payments late in the last 90 days",
+        "feature": "INST_LATE_MEAN_LAST90",
+        "impact": 53,
+        "shap": 0.124755,
+        "direction": "up"
+      },
       {
         "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 47,
+        "shap": -0.11106,
+        "direction": "down"
+      },
+      {
+        "label": "Higher region rating client w city",
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "impact": 47,
+        "shap": 0.110725,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-423565",
+    "score": 0.3884,
+    "tier": "Intervene",
+    "trend": [
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
         "impact": 100,
-        "direction": "down"
-      },
-      {
-        "label": "Recent payments below amount due",
-        "impact": 18,
+        "shap": 0.817318,
         "direction": "up"
       },
       {
-        "label": "Strong score from credit bureau (source 3)",
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 39,
+        "shap": 0.319976,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 32,
+        "shap": -0.25987,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 31,
+        "shap": 0.255507,
+        "direction": "up"
+      },
+      {
+        "label": "Combined external credit signals are weak",
+        "feature": "EXT_PROD",
+        "impact": 21,
+        "shap": 0.171898,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 20,
+        "shap": 0.159619,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 19,
+        "shap": 0.157142,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 17,
+        "shap": 0.135194,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 9,
+        "shap": -0.071171,
+        "direction": "down"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 9,
+        "shap": 0.070086,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-250787",
+    "score": 0.3884,
+    "tier": "Intervene",
+    "trend": [
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.781847,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 38,
+        "shap": 0.299714,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 28,
+        "shap": 0.220734,
+        "direction": "up"
+      },
+      {
+        "label": "Lower inst pay ratio last90",
+        "feature": "INST_PAY_RATIO_LAST90",
+        "impact": 23,
+        "shap": -0.181347,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 22,
+        "shap": 0.1737,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 22,
+        "shap": 0.170761,
+        "direction": "up"
+      },
+      {
+        "label": "Many active bureau loans",
+        "feature": "BUR_ACTIVE_COUNT",
+        "impact": 22,
+        "shap": 0.170632,
+        "direction": "up"
+      },
+      {
+        "label": "Recent ID document change",
+        "feature": "ID_RECENCY",
+        "impact": 19,
+        "shap": 0.147457,
+        "direction": "up"
+      },
+      {
+        "label": "Consistently pays full installment amount",
+        "feature": "INST_PAY_RATIO_MEAN",
+        "impact": 17,
+        "shap": -0.13625,
+        "direction": "down"
+      },
+      {
+        "label": "Higher bur credit age mean",
+        "feature": "BUR_CREDIT_AGE_MEAN",
         "impact": 16,
-        "direction": "down"
-      },
+        "shap": 0.125907,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-183895",
+    "score": 0.3884,
+    "tier": "Intervene",
+    "trend": [
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884,
+      0.3884
+    ],
+    "drivers": [
       {
-        "label": "Strong score from credit bureau (source 2)",
-        "impact": 15,
-        "direction": "down"
-      },
-      {
-        "label": "Lower ext source age",
-        "impact": 12,
-        "direction": "down"
-      },
-      {
-        "label": "High-value item being financed",
-        "impact": 12,
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.759904,
         "direction": "up"
       },
       {
-        "label": "Few recent credit checks by other lenders",
-        "impact": 10,
-        "direction": "down"
-      },
-      {
-        "label": "Loan amount in line with item's value",
-        "impact": 10,
-        "direction": "down"
-      },
-      {
-        "label": "Recent change of contact phone number",
-        "impact": 9,
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 30,
+        "shap": 0.230546,
         "direction": "up"
       },
       {
-        "label": "Lower hour appr process start",
-        "impact": 9,
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 30,
+        "shap": 0.226956,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 28,
+        "shap": 0.212438,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 23,
+        "shap": 0.173518,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 21,
+        "shap": -0.15742,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 20,
+        "shap": 0.153721,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 18,
+        "shap": 0.135084,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 17,
+        "shap": 0.131353,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 17,
+        "shap": 0.128962,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-209695",
+    "score": 0.3742,
+    "tier": "Intervene",
+    "trend": [
+      0.3742,
+      0.3742,
+      0.3742,
+      0.3742,
+      0.3742,
+      0.3742
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.558258,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 34,
+        "shap": -0.188605,
+        "direction": "down"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 30,
+        "shap": 0.168079,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 30,
+        "shap": 0.16475,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 28,
+        "shap": 0.155934,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 25,
+        "shap": 0.142241,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 21,
+        "shap": 0.117121,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 21,
+        "shap": 0.116345,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos max dpd def",
+        "feature": "POS_MAX_DPD_DEF",
+        "impact": 19,
+        "shap": 0.106996,
+        "direction": "up"
+      },
+      {
+        "label": "Smaller total loan amount",
+        "feature": "AMT_CREDIT",
+        "impact": 19,
+        "shap": -0.106721,
         "direction": "down"
       }
     ]
   },
   {
-    "id": "ACC-180202",
-    "score": 0.55,
-    "tier": "Nudge",
+    "id": "ACC-452817",
+    "score": 0.3252,
+    "tier": "Intervene",
     "trend": [
-      0.55,
-      0.55,
-      0.55,
-      0.55,
-      0.55,
-      0.55
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252
     ],
     "drivers": [
       {
-        "label": "Recent payments have matched amounts due",
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
         "impact": 100,
-        "direction": "down"
-      },
-      {
-        "label": "Strong score from credit bureau (source 3)",
-        "impact": 94,
-        "direction": "down"
-      },
-      {
-        "label": "History of loan application rejections",
-        "impact": 84,
+        "shap": 0.659389,
         "direction": "up"
       },
       {
-        "label": "High credit utilization",
-        "impact": 67,
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 51,
+        "shap": 0.334805,
         "direction": "up"
       },
       {
-        "label": "Few recent credit checks by other lenders",
-        "impact": 43,
-        "direction": "down"
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 34,
+        "shap": 0.222327,
+        "direction": "up"
       },
       {
-        "label": "Higher flag work phone",
-        "impact": 36,
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 25,
+        "shap": 0.163412,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 25,
+        "shap": 0.163104,
+        "direction": "up"
+      },
+      {
+        "label": "Higher reg city not live city",
+        "feature": "REG_CITY_NOT_LIVE_CITY",
+        "impact": 15,
+        "shap": 0.096725,
         "direction": "up"
       },
       {
         "label": "Younger applicant",
-        "impact": 33,
+        "feature": "AGE_YEARS",
+        "impact": 14,
+        "shap": 0.094069,
         "direction": "up"
       },
       {
-        "label": "Lower-rated region (city-adjusted)",
-        "impact": 31,
-        "direction": "up"
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 14,
+        "shap": -0.090453,
+        "direction": "down"
       },
       {
-        "label": "Higher ext source age",
-        "impact": 31,
-        "direction": "up"
+        "label": "ID document has been stable",
+        "feature": "ID_RECENCY",
+        "impact": 13,
+        "shap": -0.083598,
+        "direction": "down"
       },
       {
-        "label": "Borrowing more than the item's value",
-        "impact": 31,
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 12,
+        "shap": 0.078905,
         "direction": "up"
       }
     ]
   },
   {
-    "id": "ACC-399988",
-    "score": 0.39,
-    "tier": "Nudge",
-    "trend": [
-      0.39,
-      0.39,
-      0.39,
-      0.39,
-      0.39,
-      0.39
-    ],
-    "drivers": [
-      {
-        "label": "Loan size is modest relative to age",
-        "impact": 100,
-        "direction": "down"
-      },
-      {
-        "label": "Strong score from credit bureau (source 3)",
-        "impact": 96,
-        "direction": "down"
-      },
-      {
-        "label": "Owns a car",
-        "impact": 87,
-        "direction": "down"
-      },
-      {
-        "label": "Above-average external credit score",
-        "impact": 82,
-        "direction": "down"
-      },
-      {
-        "label": "ID document has not changed recently",
-        "impact": 72,
-        "direction": "down"
-      },
-      {
-        "label": "Lower-rated region (city-adjusted)",
-        "impact": 68,
-        "direction": "up"
-      },
-      {
-        "label": "Loan amount in line with item's value",
-        "impact": 58,
-        "direction": "down"
-      },
-      {
-        "label": "Strong history of loan approvals",
-        "impact": 50,
-        "direction": "down"
-      },
-      {
-        "label": "High-value item being financed",
-        "impact": 50,
-        "direction": "up"
-      },
-      {
-        "label": "Recent payments have matched amounts due",
-        "impact": 45,
-        "direction": "down"
-      }
-    ]
-  },
-  {
-    "id": "ACC-188337",
-    "score": 0.49,
-    "tier": "Nudge",
-    "trend": [
-      0.49,
-      0.49,
-      0.49,
-      0.49,
-      0.49,
-      0.49
-    ],
-    "drivers": [
-      {
-        "label": "Below-average external credit score",
-        "impact": 100,
-        "direction": "up"
-      },
-      {
-        "label": "Borrowing more than the item's value",
-        "impact": 93,
-        "direction": "up"
-      },
-      {
-        "label": "Strong score from credit bureau (source 3)",
-        "impact": 62,
-        "direction": "down"
-      },
-      {
-        "label": "Established point-of-sale loan history",
-        "impact": 47,
-        "direction": "down"
-      },
-      {
-        "label": "Strong history of loan approvals",
-        "impact": 39,
-        "direction": "down"
-      },
-      {
-        "label": "Strong score from credit bureau (source 1)",
-        "impact": 39,
-        "direction": "down"
-      },
-      {
-        "label": "Owns a car",
-        "impact": 39,
-        "direction": "down"
-      },
-      {
-        "label": "Credit score solid relative to employment history",
-        "impact": 38,
-        "direction": "down"
-      },
-      {
-        "label": "High-value item being financed",
-        "impact": 37,
-        "direction": "up"
-      },
-      {
-        "label": "Manageable monthly repayment amount",
-        "impact": 33,
-        "direction": "down"
-      }
-    ]
-  },
-  {
-    "id": "ACC-115396",
-    "score": 0.83,
+    "id": "ACC-271113",
+    "score": 0.3252,
     "tier": "Intervene",
     "trend": [
-      0.83,
-      0.83,
-      0.83,
-      0.83,
-      0.83,
-      0.83
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252
     ],
     "drivers": [
       {
         "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
         "impact": 100,
+        "shap": 0.237673,
         "direction": "up"
       },
       {
-        "label": "Weak score from credit bureau (source 3)",
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 99,
+        "shap": 0.235432,
+        "direction": "up"
+      },
+      {
+        "label": "Recent POS delinquency event",
+        "feature": "POS_MONTHS_SINCE_LAST_DPD",
+        "impact": 93,
+        "shap": 0.221457,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 75,
+        "shap": 0.177471,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 74,
+        "shap": -0.176365,
+        "direction": "down"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 68,
+        "shap": 0.161751,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 59,
+        "shap": 0.139169,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 57,
+        "shap": 0.135711,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 55,
+        "shap": 0.130716,
+        "direction": "up"
+      },
+      {
+        "label": "Payments tend to arrive late",
+        "feature": "INST_MEAN_LATE",
+        "impact": 50,
+        "shap": 0.117761,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-452492",
+    "score": 0.3252,
+    "tier": "Intervene",
+    "trend": [
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252,
+      0.3252
+    ],
+    "drivers": [
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 100,
+        "shap": 0.373247,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 97,
+        "shap": 0.362308,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 60,
+        "shap": 0.224789,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 43,
+        "shap": 0.161736,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 42,
+        "shap": 0.158162,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 41,
+        "shap": 0.151411,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 40,
+        "shap": 0.150643,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 38,
+        "shap": -0.140788,
+        "direction": "down"
+      },
+      {
+        "label": "Payments tend to arrive late",
+        "feature": "INST_MEAN_LATE",
+        "impact": 33,
+        "shap": 0.12349,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
         "impact": 31,
+        "shap": 0.116357,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-234921",
+    "score": 0.3181,
+    "tier": "Intervene",
+    "trend": [
+      0.3181,
+      0.3181,
+      0.3181,
+      0.3181,
+      0.3181,
+      0.3181
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.623069,
         "direction": "up"
       },
       {
-        "label": "History of loan application rejections",
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 45,
+        "shap": 0.282261,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 36,
+        "shap": 0.2248,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 33,
+        "shap": -0.202941,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
         "impact": 30,
+        "shap": 0.188306,
         "direction": "up"
       },
       {
-        "label": "High credit utilization",
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
         "impact": 23,
+        "shap": 0.140747,
         "direction": "up"
       },
       {
-        "label": "Lower declared income",
-        "impact": 18,
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 19,
+        "shap": 0.120128,
         "direction": "up"
       },
       {
-        "label": "ID document has not changed recently",
-        "impact": 17,
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 16,
+        "shap": 0.100312,
+        "direction": "up"
+      },
+      {
+        "label": "Higher bur amt debt mean",
+        "feature": "BUR_AMT_DEBT_MEAN",
+        "impact": 16,
+        "shap": 0.099654,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity max",
+        "feature": "PREV_ANNUITY_MAX",
+        "impact": 14,
+        "shap": -0.088081,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-101000",
+    "score": 0.2912,
+    "tier": "Intervene",
+    "trend": [
+      0.2912,
+      0.2912,
+      0.2912,
+      0.2912,
+      0.2912,
+      0.2912
+    ],
+    "drivers": [
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 100,
+        "shap": 0.227103,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 85,
+        "shap": 0.193931,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 85,
+        "shap": 0.19259,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 71,
+        "shap": 0.161289,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 59,
+        "shap": 0.134437,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 55,
+        "shap": 0.125161,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 53,
+        "shap": 0.121106,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 43,
+        "shap": -0.097548,
         "direction": "down"
       },
       {
         "label": "High monthly repayment amount",
-        "impact": 15,
+        "feature": "AMT_ANNUITY",
+        "impact": 39,
+        "shap": 0.089602,
         "direction": "up"
       },
       {
-        "label": "No history of major payment delays",
-        "impact": 14,
-        "direction": "down"
-      },
-      {
-        "label": "Borrowing more than the item's value",
-        "impact": 11,
-        "direction": "up"
-      },
-      {
-        "label": "Credit score solid relative to employment history",
-        "impact": 9,
-        "direction": "down"
-      }
-    ]
-  },
-  {
-    "id": "ACC-429121",
-    "score": 0.65,
-    "tier": "Intervene",
-    "trend": [
-      0.65,
-      0.65,
-      0.65,
-      0.65,
-      0.65,
-      0.65
-    ],
-    "drivers": [
-      {
-        "label": "Below-average external credit score",
-        "impact": 100,
-        "direction": "up"
-      },
-      {
-        "label": "Peak credit card utilization is low",
-        "impact": 22,
-        "direction": "down"
-      },
-      {
-        "label": "History of loan application rejections",
-        "impact": 22,
-        "direction": "up"
-      },
-      {
-        "label": "Loan amount in line with item's value",
-        "impact": 14,
-        "direction": "down"
-      },
-      {
-        "label": "Credit score solid relative to employment history",
-        "impact": 12,
-        "direction": "down"
-      },
-      {
-        "label": "Higher apartments avg",
-        "impact": 11,
-        "direction": "up"
-      },
-      {
-        "label": "Low average credit card utilization",
-        "impact": 10,
-        "direction": "down"
-      },
-      {
-        "label": "Few recent credit checks by other lenders",
-        "impact": 10,
-        "direction": "down"
-      },
-      {
-        "label": "Lower ext source min",
-        "impact": 10,
-        "direction": "down"
-      },
-      {
-        "label": "Limited point-of-sale loan history",
-        "impact": 9,
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 38,
+        "shap": 0.085773,
         "direction": "up"
       }
     ]
   },
   {
-    "id": "ACC-154222",
-    "score": 0.65,
+    "id": "ACC-346381",
+    "score": 0.2912,
     "tier": "Intervene",
     "trend": [
-      0.65,
-      0.65,
-      0.65,
-      0.65,
-      0.65,
-      0.65
+      0.2912,
+      0.2912,
+      0.2912,
+      0.2912,
+      0.2912,
+      0.2912
     ],
     "drivers": [
       {
         "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
         "impact": 100,
+        "shap": 0.562881,
         "direction": "up"
       },
       {
-        "label": "Peak credit card utilization is low",
-        "impact": 30,
+        "label": "Recent credit card utilisation is high",
+        "feature": "CC_UTIL_LAST3M",
+        "impact": 41,
+        "shap": 0.22942,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 34,
+        "shap": 0.190633,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 33,
+        "shap": 0.185793,
+        "direction": "up"
+      },
+      {
+        "label": "Heavy ATM cash withdrawals (stress signal)",
+        "feature": "CC_ATM_DRAW_MEAN",
+        "impact": 24,
+        "shap": 0.134206,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 24,
+        "shap": 0.134192,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 23,
+        "shap": 0.131254,
+        "direction": "up"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 23,
+        "shap": -0.128586,
         "direction": "down"
       },
       {
-        "label": "Loan amount in line with item's value",
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 21,
+        "shap": -0.120072,
+        "direction": "down"
+      },
+      {
+        "label": "Lower inst count",
+        "feature": "INST_COUNT",
+        "impact": 18,
+        "shap": -0.099356,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-361429",
+    "score": 0.2881,
+    "tier": "Intervene",
+    "trend": [
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.513749,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 39,
+        "shap": 0.202086,
+        "direction": "up"
+      },
+      {
+        "label": "Payments late in the last 90 days",
+        "feature": "INST_LATE_MEAN_LAST90",
+        "impact": 35,
+        "shap": 0.180947,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 31,
+        "shap": 0.158218,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 27,
+        "shap": -0.139613,
+        "direction": "down"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 26,
+        "shap": -0.136075,
+        "direction": "down"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 26,
+        "shap": 0.131818,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
         "impact": 25,
+        "shap": -0.130961,
+        "direction": "down"
+      },
+      {
+        "label": "Recent credit card utilisation is high",
+        "feature": "CC_UTIL_LAST3M",
+        "impact": 20,
+        "shap": 0.104892,
+        "direction": "up"
+      },
+      {
+        "label": "Multiple stress signals worsening together",
+        "feature": "COMPOSITE_STRESS_TREND",
+        "impact": 19,
+        "shap": 0.095852,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-226554",
+    "score": 0.2881,
+    "tier": "Intervene",
+    "trend": [
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.637013,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 38,
+        "shap": 0.243805,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 33,
+        "shap": -0.207285,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 29,
+        "shap": 0.184907,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 26,
+        "shap": -0.163917,
+        "direction": "down"
+      },
+      {
+        "label": "Many active bureau loans",
+        "feature": "BUR_ACTIVE_COUNT",
+        "impact": 25,
+        "shap": 0.161028,
+        "direction": "up"
+      },
+      {
+        "label": "Higher bur future credits",
+        "feature": "BUR_FUTURE_CREDITS",
+        "impact": 24,
+        "shap": 0.152132,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 21,
+        "shap": 0.130704,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 19,
+        "shap": 0.118738,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 17,
+        "shap": 0.109466,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-351267",
+    "score": 0.2881,
+    "tier": "Intervene",
+    "trend": [
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881,
+      0.2881
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.599729,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 53,
+        "shap": -0.318522,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 31,
+        "shap": 0.184569,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 27,
+        "shap": 0.16015,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 26,
+        "shap": 0.154907,
+        "direction": "up"
+      },
+      {
+        "label": "Consistently pays full installment amount",
+        "feature": "INST_PAY_RATIO_MEAN",
+        "impact": 25,
+        "shap": -0.148153,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 24,
+        "shap": 0.145818,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 24,
+        "shap": 0.142738,
+        "direction": "up"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 17,
+        "shap": 0.10185,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 17,
+        "shap": 0.101354,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-107185",
+    "score": 0.2215,
+    "tier": "Intervene",
+    "trend": [
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215
+    ],
+    "drivers": [
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 100,
+        "shap": 0.291879,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 96,
+        "shap": 0.279111,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 76,
+        "shap": 0.22249,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 51,
+        "shap": 0.150282,
+        "direction": "up"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 49,
+        "shap": 0.142989,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 46,
+        "shap": 0.13289,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 38,
+        "shap": 0.112131,
+        "direction": "up"
+      },
+      {
+        "label": "High-value item being financed",
+        "feature": "AMT_GOODS_PRICE",
+        "impact": 35,
+        "shap": 0.100776,
+        "direction": "up"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 34,
+        "shap": 0.097827,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 33,
+        "shap": -0.097041,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-337438",
+    "score": 0.2215,
+    "tier": "Intervene",
+    "trend": [
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215
+    ],
+    "drivers": [
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 100,
+        "shap": 0.257834,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 78,
+        "shap": 0.202292,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 72,
+        "shap": 0.186053,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 59,
+        "shap": 0.152133,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 51,
+        "shap": -0.130806,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 46,
+        "shap": 0.117927,
+        "direction": "up"
+      },
+      {
+        "label": "Rarely cancels loan applications",
+        "feature": "PREV_CANCEL_RATE",
+        "impact": 34,
+        "shap": -0.088359,
+        "direction": "down"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 31,
+        "shap": 0.078783,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst count",
+        "feature": "INST_COUNT",
+        "impact": 29,
+        "shap": 0.074357,
+        "direction": "up"
+      },
+      {
+        "label": "Low prior loan approval rate",
+        "feature": "PREV_APPROVAL_RATE",
+        "impact": 26,
+        "shap": 0.068149,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-316898",
+    "score": 0.2215,
+    "tier": "Intervene",
+    "trend": [
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.873091,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 40,
+        "shap": 0.350995,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 31,
+        "shap": 0.272768,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 17,
+        "shap": 0.151512,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 17,
+        "shap": 0.147101,
+        "direction": "up"
+      },
+      {
+        "label": "ID document has been stable",
+        "feature": "ID_RECENCY",
+        "impact": 13,
+        "shap": -0.116444,
+        "direction": "down"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 13,
+        "shap": -0.115283,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 12,
+        "shap": 0.103938,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 10,
+        "shap": -0.086711,
+        "direction": "down"
+      },
+      {
+        "label": "Long employment history relative to age",
+        "feature": "EMPLOYED_TO_AGE",
+        "impact": 10,
+        "shap": -0.085464,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-449174",
+    "score": 0.2215,
+    "tier": "Intervene",
+    "trend": [
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215,
+      0.2215
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.677762,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 65,
+        "shap": 0.437581,
+        "direction": "up"
+      },
+      {
+        "label": "Higher bur amt credit max",
+        "feature": "BUR_AMT_CREDIT_MAX",
+        "impact": 20,
+        "shap": 0.136555,
+        "direction": "up"
+      },
+      {
+        "label": "Higher bur amt credit mean",
+        "feature": "BUR_AMT_CREDIT_MEAN",
+        "impact": 20,
+        "shap": 0.133661,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 14,
+        "shap": 0.09509,
+        "direction": "up"
+      },
+      {
+        "label": "Lives in a less densely populated area",
+        "feature": "REGION_POPULATION_RELATIVE",
+        "impact": 14,
+        "shap": 0.093917,
+        "direction": "up"
+      },
+      {
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 14,
+        "shap": -0.092119,
+        "direction": "down"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 13,
+        "shap": -0.090841,
+        "direction": "down"
+      },
+      {
+        "label": "Lower cc util max",
+        "feature": "CC_UTIL_MAX",
+        "impact": 12,
+        "shap": -0.081712,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 11,
+        "shap": 0.073734,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-311971",
+    "score": 0.211,
+    "tier": "Intervene",
+    "trend": [
+      0.211,
+      0.211,
+      0.211,
+      0.211,
+      0.211,
+      0.211
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.633878,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 32,
+        "shap": 0.203474,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 30,
+        "shap": 0.188545,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 29,
+        "shap": -0.18333,
+        "direction": "down"
+      },
+      {
+        "label": "Higher def 30 cnt social circle",
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "impact": 20,
+        "shap": 0.127313,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 19,
+        "shap": 0.117708,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 17,
+        "shap": -0.107026,
+        "direction": "down"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 16,
+        "shap": 0.102585,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 16,
+        "shap": 0.100971,
+        "direction": "up"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 14,
+        "shap": -0.089958,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-422477",
+    "score": 0.211,
+    "tier": "Intervene",
+    "trend": [
+      0.211,
+      0.211,
+      0.211,
+      0.211,
+      0.211,
+      0.211
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.635294,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 26,
+        "shap": 0.167068,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 17,
+        "shap": 0.109074,
+        "direction": "up"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 16,
+        "shap": -0.103189,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 16,
+        "shap": 0.099707,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 15,
+        "shap": 0.096475,
+        "direction": "up"
+      },
+      {
+        "label": "Low utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 14,
+        "shap": -0.091006,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 13,
+        "shap": -0.083442,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 13,
+        "shap": 0.082338,
+        "direction": "up"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 12,
+        "shap": 0.079307,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-365491",
+    "score": 0.1953,
+    "tier": "Intervene",
+    "trend": [
+      0.1953,
+      0.1953,
+      0.1953,
+      0.1953,
+      0.1953,
+      0.1953
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.428782,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 51,
+        "shap": 0.218693,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 50,
+        "shap": 0.21578,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 44,
+        "shap": 0.190209,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 43,
+        "shap": 0.18275,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 31,
+        "shap": -0.134711,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 26,
+        "shap": 0.113295,
+        "direction": "up"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 26,
+        "shap": -0.110014,
+        "direction": "down"
+      },
+      {
+        "label": "Payments late in the last 90 days",
+        "feature": "INST_LATE_MEAN_LAST90",
+        "impact": 25,
+        "shap": 0.107281,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 22,
+        "shap": 0.095839,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-378984",
+    "score": 0.1953,
+    "tier": "Intervene",
+    "trend": [
+      0.1953,
+      0.1953,
+      0.1953,
+      0.1953,
+      0.1953,
+      0.1953
+    ],
+    "drivers": [
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 100,
+        "shap": -0.294022,
+        "direction": "down"
+      },
+      {
+        "label": "Recent credit card utilisation is high",
+        "feature": "CC_UTIL_LAST3M",
+        "impact": 85,
+        "shap": 0.250228,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 83,
+        "shap": 0.244657,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 83,
+        "shap": 0.243849,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 48,
+        "shap": 0.139912,
+        "direction": "up"
+      },
+      {
+        "label": "Higher flag work phone",
+        "feature": "FLAG_WORK_PHONE",
+        "impact": 43,
+        "shap": 0.127796,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 41,
+        "shap": 0.12194,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 41,
+        "shap": 0.121752,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 36,
+        "shap": 0.105805,
+        "direction": "up"
+      },
+      {
+        "label": "Higher bur amt credit max",
+        "feature": "BUR_AMT_CREDIT_MAX",
+        "impact": 35,
+        "shap": 0.10373,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-189058",
+    "score": 0.1822,
+    "tier": "Intervene",
+    "trend": [
+      0.1822,
+      0.1822,
+      0.1822,
+      0.1822,
+      0.1822,
+      0.1822
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.356017,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 86,
+        "shap": 0.307742,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 48,
+        "shap": 0.170499,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 42,
+        "shap": 0.150801,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 40,
+        "shap": -0.143282,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 40,
+        "shap": 0.141075,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 35,
+        "shap": -0.124725,
+        "direction": "down"
+      },
+      {
+        "label": "Higher region rating client w city",
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "impact": 32,
+        "shap": 0.115069,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 27,
+        "shap": -0.096152,
+        "direction": "down"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 27,
+        "shap": 0.095421,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-436840",
+    "score": 0.1803,
+    "tier": "Intervene",
+    "trend": [
+      0.1803,
+      0.1803,
+      0.1803,
+      0.1803,
+      0.1803,
+      0.1803
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.591136,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 35,
+        "shap": 0.208276,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 32,
+        "shap": 0.191665,
+        "direction": "up"
+      },
+      {
+        "label": "Lower organization type",
+        "feature": "ORGANIZATION_TYPE",
+        "impact": 30,
+        "shap": -0.176903,
+        "direction": "down"
+      },
+      {
+        "label": "Recent POS delinquency event",
+        "feature": "POS_MONTHS_SINCE_LAST_DPD",
+        "impact": 29,
+        "shap": 0.169818,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 27,
+        "shap": -0.158972,
         "direction": "down"
       },
       {
         "label": "Recent ID document change",
+        "feature": "ID_RECENCY",
+        "impact": 25,
+        "shap": 0.148427,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
         "impact": 20,
+        "shap": 0.117342,
         "direction": "up"
       },
       {
-        "label": "High-value item being financed",
-        "impact": 18,
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 19,
+        "shap": 0.112714,
         "direction": "up"
       },
       {
-        "label": "Established point-of-sale loan history",
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
         "impact": 17,
+        "shap": 0.10299,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-145936",
+    "score": 0.1803,
+    "tier": "Intervene",
+    "trend": [
+      0.1803,
+      0.1803,
+      0.1803,
+      0.1803,
+      0.1803,
+      0.1803
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.348889,
+        "direction": "up"
+      },
+      {
+        "label": "Recent credit card utilisation is high",
+        "feature": "CC_UTIL_LAST3M",
+        "impact": 54,
+        "shap": 0.189175,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 47,
+        "shap": 0.164094,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 44,
+        "shap": 0.155107,
+        "direction": "up"
+      },
+      {
+        "label": "Lower inst pay ratio last90",
+        "feature": "INST_PAY_RATIO_LAST90",
+        "impact": 33,
+        "shap": -0.11396,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 32,
+        "shap": 0.110296,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 29,
+        "shap": 0.102851,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 26,
+        "shap": 0.09191,
+        "direction": "up"
+      },
+      {
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 25,
+        "shap": -0.088423,
         "direction": "down"
       },
       {
         "label": "Younger applicant",
-        "impact": 17,
+        "feature": "AGE_YEARS",
+        "impact": 21,
+        "shap": 0.074823,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-450403",
+    "score": 0.1754,
+    "tier": "Intervene",
+    "trend": [
+      0.1754,
+      0.1754,
+      0.1754,
+      0.1754,
+      0.1754,
+      0.1754
+    ],
+    "drivers": [
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 100,
+        "shap": 0.212423,
         "direction": "up"
       },
       {
-        "label": "Lower name education type higher education",
-        "impact": 16,
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 88,
+        "shap": 0.186333,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 67,
+        "shap": 0.142176,
+        "direction": "up"
+      },
+      {
+        "label": "Higher flag work phone",
+        "feature": "FLAG_WORK_PHONE",
+        "impact": 60,
+        "shap": 0.127026,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 45,
+        "shap": 0.095417,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 43,
+        "shap": 0.090747,
+        "direction": "up"
+      },
+      {
+        "label": "Lower region rating client w city",
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "impact": 42,
+        "shap": -0.090203,
         "direction": "down"
       },
       {
-        "label": "Lower ext source min",
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 40,
+        "shap": 0.085101,
+        "direction": "up"
+      },
+      {
+        "label": "Combined external credit signals are weak",
+        "feature": "EXT_PROD",
+        "impact": 35,
+        "shap": 0.075035,
+        "direction": "up"
+      },
+      {
+        "label": "High-value item being financed",
+        "feature": "AMT_GOODS_PRICE",
+        "impact": 34,
+        "shap": 0.072831,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-258491",
+    "score": 0.1754,
+    "tier": "Intervene",
+    "trend": [
+      0.1754,
+      0.1754,
+      0.1754,
+      0.1754,
+      0.1754,
+      0.1754
+    ],
+    "drivers": [
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 100,
+        "shap": 0.159669,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 90,
+        "shap": 0.14433,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 84,
+        "shap": 0.134804,
+        "direction": "up"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 78,
+        "shap": 0.124249,
+        "direction": "up"
+      },
+      {
+        "label": "Recent ID document change",
+        "feature": "ID_RECENCY",
+        "impact": 75,
+        "shap": 0.120158,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 73,
+        "shap": 0.116328,
+        "direction": "up"
+      },
+      {
+        "label": "Higher flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 63,
+        "shap": 0.100617,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 56,
+        "shap": 0.088863,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 48,
+        "shap": -0.076855,
+        "direction": "down"
+      },
+      {
+        "label": "Payments tend to arrive late",
+        "feature": "INST_MEAN_LATE",
+        "impact": 47,
+        "shap": 0.075733,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-420339",
+    "score": 0.1502,
+    "tier": "Intervene",
+    "trend": [
+      0.1502,
+      0.1502,
+      0.1502,
+      0.1502,
+      0.1502,
+      0.1502
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.300003,
+        "direction": "up"
+      },
+      {
+        "label": "Recent credit card utilisation is high",
+        "feature": "CC_UTIL_LAST3M",
+        "impact": 89,
+        "shap": 0.266712,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 71,
+        "shap": 0.211956,
+        "direction": "up"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 48,
+        "shap": -0.144773,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 46,
+        "shap": 0.138447,
+        "direction": "up"
+      },
+      {
+        "label": "Lower inst count",
+        "feature": "INST_COUNT",
+        "impact": 38,
+        "shap": -0.113906,
+        "direction": "down"
+      },
+      {
+        "label": "Heavy ATM cash withdrawals (stress signal)",
+        "feature": "CC_ATM_DRAW_MEAN",
+        "impact": 37,
+        "shap": 0.10973,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 35,
+        "shap": 0.105855,
+        "direction": "up"
+      },
+      {
+        "label": "Multiple stress signals worsening together",
+        "feature": "COMPOSITE_STRESS_TREND",
+        "impact": 32,
+        "shap": 0.097228,
+        "direction": "up"
+      },
+      {
+        "label": "Higher cc util max",
+        "feature": "CC_UTIL_MAX",
+        "impact": 28,
+        "shap": 0.083478,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-315359",
+    "score": 0.1439,
+    "tier": "Intervene",
+    "trend": [
+      0.1439,
+      0.1439,
+      0.1439,
+      0.1439,
+      0.1439,
+      0.1439
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.364447,
+        "direction": "up"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 81,
+        "shap": -0.295374,
+        "direction": "down"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 71,
+        "shap": 0.25744,
+        "direction": "up"
+      },
+      {
+        "label": "Rarely cancels loan applications",
+        "feature": "PREV_CANCEL_RATE",
+        "impact": 51,
+        "shap": -0.184526,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 49,
+        "shap": 0.176936,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 39,
+        "shap": 0.142883,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 37,
+        "shap": 0.133613,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 29,
+        "shap": 0.106969,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 25,
+        "shap": -0.091688,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 25,
+        "shap": 0.09107,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-290354",
+    "score": 0.138,
+    "tier": "Intervene",
+    "trend": [
+      0.138,
+      0.138,
+      0.138,
+      0.138,
+      0.138,
+      0.138
+    ],
+    "drivers": [
+      {
+        "label": "Recent POS delinquency event",
+        "feature": "POS_MONTHS_SINCE_LAST_DPD",
+        "impact": 100,
+        "shap": 0.269619,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 95,
+        "shap": 0.255983,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 77,
+        "shap": -0.207009,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 70,
+        "shap": 0.188856,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 64,
+        "shap": 0.173608,
+        "direction": "up"
+      },
+      {
+        "label": "Payments tend to arrive late",
+        "feature": "INST_MEAN_LATE",
+        "impact": 54,
+        "shap": 0.145112,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 54,
+        "shap": 0.144461,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 47,
+        "shap": 0.125996,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 36,
+        "shap": -0.096519,
+        "direction": "down"
+      },
+      {
+        "label": "Older, more established applicant",
+        "feature": "AGE_YEARS",
+        "impact": 30,
+        "shap": -0.080855,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-333582",
+    "score": 0.1353,
+    "tier": "Intervene",
+    "trend": [
+      0.1353,
+      0.1353,
+      0.1353,
+      0.1353,
+      0.1353,
+      0.1353
+    ],
+    "drivers": [
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 100,
+        "shap": 0.20553,
+        "direction": "up"
+      },
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 75,
+        "shap": -0.153442,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 74,
+        "shap": 0.151442,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 70,
+        "shap": -0.143182,
+        "direction": "down"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 53,
+        "shap": 0.108277,
+        "direction": "up"
+      },
+      {
+        "label": "Combined external credit signals are weak",
+        "feature": "EXT_PROD",
+        "impact": 50,
+        "shap": 0.103569,
+        "direction": "up"
+      },
+      {
+        "label": "Higher def 60 cnt social circle",
+        "feature": "DEF_60_CNT_SOCIAL_CIRCLE",
+        "impact": 47,
+        "shap": 0.09582,
+        "direction": "up"
+      },
+      {
+        "label": "High-value item being financed",
+        "feature": "AMT_GOODS_PRICE",
+        "impact": 45,
+        "shap": 0.09321,
+        "direction": "up"
+      },
+      {
+        "label": "Higher inst count",
+        "feature": "INST_COUNT",
+        "impact": 44,
+        "shap": 0.089543,
+        "direction": "up"
+      },
+      {
+        "label": "Lower inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 43,
+        "shap": -0.087772,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-395778",
+    "score": 0.1353,
+    "tier": "Intervene",
+    "trend": [
+      0.1353,
+      0.1353,
+      0.1353,
+      0.1353,
+      0.1353,
+      0.1353
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.681024,
+        "direction": "up"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 25,
+        "shap": 0.167618,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 24,
+        "shap": -0.163881,
+        "direction": "down"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 23,
+        "shap": 0.154084,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 17,
+        "shap": 0.115354,
+        "direction": "up"
+      },
+      {
+        "label": "Loan is modest relative to income",
+        "feature": "CREDIT_INCOME_RATIO",
+        "impact": 17,
+        "shap": -0.113682,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 15,
+        "shap": 0.103563,
+        "direction": "up"
+      },
+      {
+        "label": "Smaller total loan amount",
+        "feature": "AMT_CREDIT",
         "impact": 14,
+        "shap": -0.097127,
         "direction": "down"
       },
       {
-        "label": "Owns a car",
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 13,
+        "shap": 0.091587,
+        "direction": "up"
+      },
+      {
+        "label": "Low prior loan approval rate",
+        "feature": "PREV_APPROVAL_RATE",
+        "impact": 13,
+        "shap": 0.090167,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-443269",
+    "score": 0.1329,
+    "tier": "Intervene",
+    "trend": [
+      0.1329,
+      0.1329,
+      0.1329,
+      0.1329,
+      0.1329,
+      0.1329
+    ],
+    "drivers": [
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 100,
+        "shap": 0.216093,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 91,
+        "shap": 0.197441,
+        "direction": "up"
+      },
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 80,
+        "shap": -0.171865,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev days mean",
+        "feature": "PREV_DAYS_MEAN",
+        "impact": 70,
+        "shap": 0.150828,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 65,
+        "shap": -0.141293,
+        "direction": "down"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 54,
+        "shap": -0.117346,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 54,
+        "shap": 0.117,
+        "direction": "up"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 50,
+        "shap": 0.108582,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 50,
+        "shap": -0.107997,
+        "direction": "down"
+      },
+      {
+        "label": "Higher region rating client w city",
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "impact": 50,
+        "shap": 0.107953,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-368936",
+    "score": 0.1137,
+    "tier": "Intervene",
+    "trend": [
+      0.1137,
+      0.1137,
+      0.1137,
+      0.1137,
+      0.1137,
+      0.1137
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.685635,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 30,
+        "shap": 0.204017,
+        "direction": "up"
+      },
+      {
+        "label": "Recent ID document change",
+        "feature": "ID_RECENCY",
+        "impact": 24,
+        "shap": 0.162163,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 22,
+        "shap": 0.147537,
+        "direction": "up"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 19,
+        "shap": -0.13286,
+        "direction": "down"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 17,
+        "shap": -0.118979,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 17,
+        "shap": -0.118491,
+        "direction": "down"
+      },
+      {
+        "label": "Lower own car age",
+        "feature": "OWN_CAR_AGE",
+        "impact": 16,
+        "shap": -0.112599,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 15,
+        "shap": 0.09952,
+        "direction": "up"
+      },
+      {
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 13,
+        "shap": -0.091275,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-101034",
+    "score": 0.107,
+    "tier": "Intervene",
+    "trend": [
+      0.107,
+      0.107,
+      0.107,
+      0.107,
+      0.107,
+      0.107
+    ],
+    "drivers": [
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 100,
+        "shap": 0.265311,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 74,
+        "shap": 0.197005,
+        "direction": "up"
+      },
+      {
+        "label": "Recent POS delinquency event",
+        "feature": "POS_MONTHS_SINCE_LAST_DPD",
+        "impact": 66,
+        "shap": 0.175981,
+        "direction": "up"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 60,
+        "shap": 0.160422,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 49,
+        "shap": 0.129466,
+        "direction": "up"
+      },
+      {
+        "label": "Lower cc util max",
+        "feature": "CC_UTIL_MAX",
+        "impact": 47,
+        "shap": -0.124345,
+        "direction": "down"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 45,
+        "shap": 0.119823,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 45,
+        "shap": -0.118183,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 42,
+        "shap": 0.112688,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 41,
+        "shap": 0.107896,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-189389",
+    "score": 0.0992,
+    "tier": "Intervene",
+    "trend": [
+      0.0992,
+      0.0992,
+      0.0992,
+      0.0992,
+      0.0992,
+      0.0992
+    ],
+    "drivers": [
+      {
+        "label": "Recent POS delinquency event",
+        "feature": "POS_MONTHS_SINCE_LAST_DPD",
+        "impact": 100,
+        "shap": 0.200824,
+        "direction": "up"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 71,
+        "shap": 0.142032,
+        "direction": "up"
+      },
+      {
+        "label": "Recent registration update",
+        "feature": "REGIST_RECENCY",
+        "impact": 65,
+        "shap": 0.12975,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 61,
+        "shap": 0.123125,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 61,
+        "shap": -0.121879,
+        "direction": "down"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 54,
+        "shap": 0.109271,
+        "direction": "up"
+      },
+      {
+        "label": "Rarely cancels loan applications",
+        "feature": "PREV_CANCEL_RATE",
+        "impact": 52,
+        "shap": -0.104752,
+        "direction": "down"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 52,
+        "shap": -0.104383,
+        "direction": "down"
+      },
+      {
+        "label": "Higher reg city not live city",
+        "feature": "REG_CITY_NOT_LIVE_CITY",
+        "impact": 43,
+        "shap": 0.086185,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 40,
+        "shap": -0.079725,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-299468",
+    "score": 0.0944,
+    "tier": "Intervene",
+    "trend": [
+      0.0944,
+      0.0944,
+      0.0944,
+      0.0944,
+      0.0944,
+      0.0944
+    ],
+    "drivers": [
+      {
+        "label": "Credit card status stable or improving",
+        "feature": "CC_BAD_RATE_TREND",
+        "impact": 100,
+        "shap": -0.172047,
+        "direction": "down"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 98,
+        "shap": 0.168544,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 94,
+        "shap": 0.161601,
+        "direction": "up"
+      },
+      {
+        "label": "Many active bureau loans",
+        "feature": "BUR_ACTIVE_COUNT",
+        "impact": 90,
+        "shap": 0.154702,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 61,
+        "shap": 0.105094,
+        "direction": "up"
+      },
+      {
+        "label": "Lower inst count",
+        "feature": "INST_COUNT",
+        "impact": 57,
+        "shap": -0.098263,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 56,
+        "shap": 0.096262,
+        "direction": "up"
+      },
+      {
+        "label": "Lower amt req credit bureau qrt",
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "impact": 47,
+        "shap": -0.080006,
+        "direction": "down"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 41,
+        "shap": 0.070237,
+        "direction": "up"
+      },
+      {
+        "label": "Most bureau loans still open",
+        "feature": "BUR_CLOSED_RATE",
+        "impact": 39,
+        "shap": 0.066758,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-161519",
+    "score": 0.0845,
+    "tier": "Nudge",
+    "trend": [
+      0.0845,
+      0.0845,
+      0.0845,
+      0.0845,
+      0.0845,
+      0.0845
+    ],
+    "drivers": [
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 100,
+        "shap": 0.189436,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 87,
+        "shap": 0.164839,
+        "direction": "up"
+      },
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 87,
+        "shap": 0.16473,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 83,
+        "shap": 0.156656,
+        "direction": "up"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 72,
+        "shap": -0.136144,
+        "direction": "down"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 56,
+        "shap": -0.105764,
+        "direction": "down"
+      },
+      {
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 53,
+        "shap": -0.10058,
+        "direction": "down"
+      },
+      {
+        "label": "Low utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 48,
+        "shap": -0.090925,
+        "direction": "down"
+      },
+      {
+        "label": "Most bureau loans successfully closed",
+        "feature": "BUR_CLOSED_RATE",
+        "impact": 45,
+        "shap": -0.086065,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev annuity max",
+        "feature": "PREV_ANNUITY_MAX",
+        "impact": 44,
+        "shap": 0.083981,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-365778",
+    "score": 0.0781,
+    "tier": "Nudge",
+    "trend": [
+      0.0781,
+      0.0781,
+      0.0781,
+      0.0781,
+      0.0781,
+      0.0781
+    ],
+    "drivers": [
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 100,
+        "shap": 0.249176,
+        "direction": "up"
+      },
+      {
+        "label": "Heavy ATM cash withdrawals (stress signal)",
+        "feature": "CC_ATM_DRAW_MEAN",
+        "impact": 79,
+        "shap": 0.197607,
+        "direction": "up"
+      },
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 75,
+        "shap": -0.186614,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 69,
+        "shap": 0.170834,
+        "direction": "up"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 66,
+        "shap": 0.165217,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 60,
+        "shap": 0.149764,
+        "direction": "up"
+      },
+      {
+        "label": "Recent credit card utilisation is high",
+        "feature": "CC_UTIL_LAST3M",
+        "impact": 60,
+        "shap": 0.149633,
+        "direction": "up"
+      },
+      {
+        "label": "Lower hour appr process start",
+        "feature": "HOUR_APPR_PROCESS_START",
+        "impact": 53,
+        "shap": -0.131495,
+        "direction": "down"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 53,
+        "shap": 0.130844,
+        "direction": "up"
+      },
+      {
+        "label": "Lower cc total pay mean",
+        "feature": "CC_TOTAL_PAY_MEAN",
+        "impact": 45,
+        "shap": -0.112432,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-154390",
+    "score": 0.0765,
+    "tier": "Nudge",
+    "trend": [
+      0.0765,
+      0.0765,
+      0.0765,
+      0.0765,
+      0.0765,
+      0.0765
+    ],
+    "drivers": [
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 100,
+        "shap": 0.445472,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 47,
+        "shap": 0.209698,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 41,
+        "shap": 0.181319,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 34,
+        "shap": -0.15366,
+        "direction": "down"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 31,
+        "shap": -0.136634,
+        "direction": "down"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 31,
+        "shap": 0.136205,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 26,
+        "shap": 0.116249,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 24,
+        "shap": -0.106811,
+        "direction": "down"
+      },
+      {
+        "label": "Lower own car age",
+        "feature": "OWN_CAR_AGE",
+        "impact": 21,
+        "shap": -0.095145,
+        "direction": "down"
+      },
+      {
+        "label": "Weakest external credit score is low",
+        "feature": "EXT_MIN",
+        "impact": 19,
+        "shap": 0.083343,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-410419",
+    "score": 0.0664,
+    "tier": "Nudge",
+    "trend": [
+      0.0664,
+      0.0664,
+      0.0664,
+      0.0664,
+      0.0664,
+      0.0664
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.603482,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 30,
+        "shap": 0.181074,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 22,
+        "shap": -0.135166,
+        "direction": "down"
+      },
+      {
+        "label": "Lower bur credit age max",
+        "feature": "BUR_CREDIT_AGE_MAX",
+        "impact": 16,
+        "shap": -0.096301,
+        "direction": "down"
+      },
+      {
+        "label": "Weakest external credit score is solid",
+        "feature": "EXT_MIN",
+        "impact": 15,
+        "shap": -0.089515,
+        "direction": "down"
+      },
+      {
+        "label": "Higher flag own car",
+        "feature": "FLAG_OWN_CAR",
         "impact": 12,
+        "shap": 0.07084,
+        "direction": "up"
+      },
+      {
+        "label": "Most bureau loans successfully closed",
+        "feature": "BUR_CLOSED_RATE",
+        "impact": 11,
+        "shap": -0.069197,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 11,
+        "shap": -0.067924,
+        "direction": "down"
+      },
+      {
+        "label": "Lower flag document 3",
+        "feature": "FLAG_DOCUMENT_3",
+        "impact": 10,
+        "shap": -0.061512,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 10,
+        "shap": -0.059644,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-446439",
+    "score": 0.0664,
+    "tier": "Nudge",
+    "trend": [
+      0.0664,
+      0.0664,
+      0.0664,
+      0.0664,
+      0.0664,
+      0.0664
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.406608,
+        "direction": "up"
+      },
+      {
+        "label": "Higher bur future credits",
+        "feature": "BUR_FUTURE_CREDITS",
+        "impact": 95,
+        "shap": 0.384749,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 39,
+        "shap": -0.1573,
+        "direction": "down"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 37,
+        "shap": 0.148542,
+        "direction": "up"
+      },
+      {
+        "label": "Many active bureau loans",
+        "feature": "BUR_ACTIVE_COUNT",
+        "impact": 35,
+        "shap": 0.140954,
+        "direction": "up"
+      },
+      {
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 27,
+        "shap": -0.11097,
+        "direction": "down"
+      },
+      {
+        "label": "Lives in a more densely populated area",
+        "feature": "REGION_POPULATION_RELATIVE",
+        "impact": 27,
+        "shap": -0.109044,
+        "direction": "down"
+      },
+      {
+        "label": "Higher bur amt debt mean",
+        "feature": "BUR_AMT_DEBT_MEAN",
+        "impact": 25,
+        "shap": 0.101305,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 22,
+        "shap": -0.090688,
+        "direction": "down"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 20,
+        "shap": 0.082518,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-125021",
+    "score": 0.0599,
+    "tier": "Nudge",
+    "trend": [
+      0.0599,
+      0.0599,
+      0.0599,
+      0.0599,
+      0.0599,
+      0.0599
+    ],
+    "drivers": [
+      {
+        "label": "Recent POS delinquency event",
+        "feature": "POS_MONTHS_SINCE_LAST_DPD",
+        "impact": 100,
+        "shap": 0.288526,
+        "direction": "up"
+      },
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 74,
+        "shap": -0.212093,
+        "direction": "down"
+      },
+      {
+        "label": "Recent credit card utilisation is high",
+        "feature": "CC_UTIL_LAST3M",
+        "impact": 60,
+        "shap": 0.172688,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 55,
+        "shap": 0.159367,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 54,
+        "shap": -0.155865,
+        "direction": "down"
+      },
+      {
+        "label": "Lower own car age",
+        "feature": "OWN_CAR_AGE",
+        "impact": 44,
+        "shap": -0.12833,
+        "direction": "down"
+      },
+      {
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 40,
+        "shap": -0.11682,
+        "direction": "down"
+      },
+      {
+        "label": "Credit card status stable or improving",
+        "feature": "CC_BAD_RATE_TREND",
+        "impact": 35,
+        "shap": -0.100594,
+        "direction": "down"
+      },
+      {
+        "label": "Higher pos max dpd def",
+        "feature": "POS_MAX_DPD_DEF",
+        "impact": 33,
+        "shap": 0.094271,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 32,
+        "shap": 0.09201,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-446284",
+    "score": 0.0537,
+    "tier": "Nudge",
+    "trend": [
+      0.0537,
+      0.0537,
+      0.0537,
+      0.0537,
+      0.0537,
+      0.0537
+    ],
+    "drivers": [
+      {
+        "label": "Combined external credit signals are strong",
+        "feature": "EXT_PROD",
+        "impact": 100,
+        "shap": -0.269522,
+        "direction": "down"
+      },
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 83,
+        "shap": -0.223843,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 77,
+        "shap": 0.208725,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 50,
+        "shap": 0.135239,
+        "direction": "up"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 43,
+        "shap": 0.115172,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 40,
+        "shap": -0.107578,
+        "direction": "down"
+      },
+      {
+        "label": "Higher bur amt credit mean",
+        "feature": "BUR_AMT_CREDIT_MEAN",
+        "impact": 38,
+        "shap": 0.102701,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 37,
+        "shap": -0.101019,
+        "direction": "down"
+      },
+      {
+        "label": "High-value item being financed",
+        "feature": "AMT_GOODS_PRICE",
+        "impact": 35,
+        "shap": 0.093471,
+        "direction": "up"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 33,
+        "shap": 0.089372,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-184177",
+    "score": 0.0456,
+    "tier": "Watch",
+    "trend": [
+      0.0456,
+      0.0456,
+      0.0456,
+      0.0456,
+      0.0456,
+      0.0456
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.211877,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 89,
+        "shap": 0.188307,
+        "direction": "up"
+      },
+      {
+        "label": "Higher prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 84,
+        "shap": 0.178826,
+        "direction": "up"
+      },
+      {
+        "label": "ID document has been stable",
+        "feature": "ID_RECENCY",
+        "impact": 70,
+        "shap": -0.149208,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 69,
+        "shap": -0.145418,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 62,
+        "shap": -0.130851,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 60,
+        "shap": 0.126451,
+        "direction": "up"
+      },
+      {
+        "label": "Low utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 52,
+        "shap": -0.109201,
+        "direction": "down"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 49,
+        "shap": -0.1037,
+        "direction": "down"
+      },
+      {
+        "label": "Full set of documents provided",
+        "feature": "DOC_COUNT",
+        "impact": 39,
+        "shap": -0.083626,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-303627",
+    "score": 0.0377,
+    "tier": "Watch",
+    "trend": [
+      0.0377,
+      0.0377,
+      0.0377,
+      0.0377,
+      0.0377,
+      0.0377
+    ],
+    "drivers": [
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 100,
+        "shap": 0.215577,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 90,
+        "shap": -0.194042,
+        "direction": "down"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 81,
+        "shap": 0.175212,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 62,
+        "shap": -0.133095,
+        "direction": "down"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 59,
+        "shap": 0.12764,
+        "direction": "up"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 54,
+        "shap": -0.116322,
+        "direction": "down"
+      },
+      {
+        "label": "Lower own car age",
+        "feature": "OWN_CAR_AGE",
+        "impact": 49,
+        "shap": -0.105805,
+        "direction": "down"
+      },
+      {
+        "label": "Low utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 48,
+        "shap": -0.103787,
+        "direction": "down"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 47,
+        "shap": 0.100984,
+        "direction": "up"
+      },
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 45,
+        "shap": -0.097769,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-109253",
+    "score": 0.032,
+    "tier": "Watch",
+    "trend": [
+      0.032,
+      0.032,
+      0.032,
+      0.032,
+      0.032,
+      0.032
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": -0.252991,
+        "direction": "down"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 57,
+        "shap": -0.145172,
+        "direction": "down"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 50,
+        "shap": -0.126757,
+        "direction": "down"
+      },
+      {
+        "label": "Higher def 60 cnt social circle",
+        "feature": "DEF_60_CNT_SOCIAL_CIRCLE",
+        "impact": 47,
+        "shap": 0.117974,
+        "direction": "up"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 41,
+        "shap": 0.103233,
+        "direction": "up"
+      },
+      {
+        "label": "Smaller total loan amount",
+        "feature": "AMT_CREDIT",
+        "impact": 37,
+        "shap": -0.093605,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 36,
+        "shap": 0.091917,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 36,
+        "shap": -0.089853,
+        "direction": "down"
+      },
+      {
+        "label": "Higher name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 34,
+        "shap": 0.084868,
+        "direction": "up"
+      },
+      {
+        "label": "Combined external credit signals are weak",
+        "feature": "EXT_PROD",
+        "impact": 33,
+        "shap": 0.084595,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-396558",
+    "score": 0.032,
+    "tier": "Watch",
+    "trend": [
+      0.032,
+      0.032,
+      0.032,
+      0.032,
+      0.032,
+      0.032
+    ],
+    "drivers": [
+      {
+        "label": "Below-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": 0.151342,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 89,
+        "shap": -0.13524,
+        "direction": "down"
+      },
+      {
+        "label": "Lower own car age",
+        "feature": "OWN_CAR_AGE",
+        "impact": 82,
+        "shap": -0.123981,
+        "direction": "down"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 73,
+        "shap": -0.11083,
+        "direction": "down"
+      },
+      {
+        "label": "High monthly repayment burden",
+        "feature": "ANNUITY_INCOME_RATIO",
+        "impact": 73,
+        "shap": 0.110614,
+        "direction": "up"
+      },
+      {
+        "label": "Weakest external credit score is solid",
+        "feature": "EXT_MIN",
+        "impact": 66,
+        "shap": -0.10045,
+        "direction": "down"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 57,
+        "shap": 0.086306,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 55,
+        "shap": 0.083675,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score low relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 55,
+        "shap": 0.083245,
+        "direction": "up"
+      },
+      {
+        "label": "Higher bur future credits",
+        "feature": "BUR_FUTURE_CREDITS",
+        "impact": 54,
+        "shap": 0.082045,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-127410",
+    "score": 0.0228,
+    "tier": "Watch",
+    "trend": [
+      0.0228,
+      0.0228,
+      0.0228,
+      0.0228,
+      0.0228,
+      0.0228
+    ],
+    "drivers": [
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 100,
+        "shap": -0.168906,
+        "direction": "down"
+      },
+      {
+        "label": "Lower bur amt credit mean",
+        "feature": "BUR_AMT_CREDIT_MEAN",
+        "impact": 84,
+        "shap": -0.141139,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 66,
+        "shap": -0.111748,
+        "direction": "down"
+      },
+      {
+        "label": "High monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 64,
+        "shap": 0.108819,
+        "direction": "up"
+      },
+      {
+        "label": "Lower-value item being financed",
+        "feature": "AMT_GOODS_PRICE",
+        "impact": 58,
+        "shap": -0.097238,
+        "direction": "down"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 57,
+        "shap": 0.096202,
+        "direction": "up"
+      },
+      {
+        "label": "ID document has been stable",
+        "feature": "ID_RECENCY",
+        "impact": 50,
+        "shap": -0.084515,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev amt diff max",
+        "feature": "PREV_AMT_DIFF_MAX",
+        "impact": 48,
+        "shap": -0.081278,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 47,
+        "shap": -0.07894,
+        "direction": "down"
+      },
+      {
+        "label": "Lower flag own car",
+        "feature": "FLAG_OWN_CAR",
+        "impact": 44,
+        "shap": -0.073642,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-348544",
+    "score": 0.0176,
+    "tier": "Watch",
+    "trend": [
+      0.0176,
+      0.0176,
+      0.0176,
+      0.0176,
+      0.0176,
+      0.0176
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": -0.408614,
+        "direction": "down"
+      },
+      {
+        "label": "Combined external credit signals are strong",
+        "feature": "EXT_PROD",
+        "impact": 77,
+        "shap": -0.313762,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 41,
+        "shap": -0.166245,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 34,
+        "shap": -0.138748,
+        "direction": "down"
+      },
+      {
+        "label": "High rate of previous loan rejections",
+        "feature": "PREV_REFUSAL_RATE",
+        "impact": 28,
+        "shap": 0.113225,
+        "direction": "up"
+      },
+      {
+        "label": "Lives in a more densely populated area",
+        "feature": "REGION_POPULATION_RELATIVE",
+        "impact": 26,
+        "shap": -0.108179,
+        "direction": "down"
+      },
+      {
+        "label": "Borrowing above the item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 26,
+        "shap": 0.106506,
+        "direction": "up"
+      },
+      {
+        "label": "Many active bureau loans",
+        "feature": "BUR_ACTIVE_COUNT",
+        "impact": 25,
+        "shap": 0.101876,
+        "direction": "up"
+      },
+      {
+        "label": "Low utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 19,
+        "shap": -0.076992,
+        "direction": "down"
+      },
+      {
+        "label": "Recent POS delinquency event",
+        "feature": "POS_MONTHS_SINCE_LAST_DPD",
+        "impact": 17,
+        "shap": 0.070555,
+        "direction": "up"
+      }
+    ]
+  },
+  {
+    "id": "ACC-135320",
+    "score": 0.0162,
+    "tier": "Watch",
+    "trend": [
+      0.0162,
+      0.0162,
+      0.0162,
+      0.0162,
+      0.0162,
+      0.0162
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": -0.253913,
+        "direction": "down"
+      },
+      {
+        "label": "High credit utilisation across bureau loans",
+        "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+        "impact": 79,
+        "shap": 0.200847,
+        "direction": "up"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 75,
+        "shap": -0.19158,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 62,
+        "shap": -0.156462,
+        "direction": "down"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 51,
+        "shap": -0.130008,
+        "direction": "down"
+      },
+      {
+        "label": "Higher inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 43,
+        "shap": 0.109302,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 39,
+        "shap": -0.099029,
+        "direction": "down"
+      },
+      {
+        "label": "Lower amt req credit bureau qrt",
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "impact": 31,
+        "shap": -0.079002,
+        "direction": "down"
+      },
+      {
+        "label": "Payments tend to arrive late",
+        "feature": "INST_MEAN_LATE",
+        "impact": 30,
+        "shap": 0.07542,
+        "direction": "up"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 29,
+        "shap": -0.072521,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-438446",
+    "score": 0.0114,
+    "tier": "Watch",
+    "trend": [
+      0.0114,
+      0.0114,
+      0.0114,
+      0.0114,
+      0.0114,
+      0.0114
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": -0.614036,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 28,
+        "shap": -0.173315,
+        "direction": "down"
+      },
+      {
+        "label": "Higher pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 27,
+        "shap": 0.165964,
+        "direction": "up"
+      },
+      {
+        "label": "Recent ID document change",
+        "feature": "ID_RECENCY",
+        "impact": 23,
+        "shap": 0.14214,
+        "direction": "up"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 19,
+        "shap": -0.117567,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score low relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 19,
+        "shap": 0.115758,
+        "direction": "up"
+      },
+      {
+        "label": "Low monthly repayment amount",
+        "feature": "AMT_ANNUITY",
+        "impact": 17,
+        "shap": -0.102887,
+        "direction": "down"
+      },
+      {
+        "label": "Most bureau loans successfully closed",
+        "feature": "BUR_CLOSED_RATE",
+        "impact": 13,
+        "shap": -0.077392,
+        "direction": "down"
+      },
+      {
+        "label": "Very long loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 12,
+        "shap": 0.074641,
+        "direction": "up"
+      },
+      {
+        "label": "Lower region rating client w city",
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "impact": 12,
+        "shap": -0.073902,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-337144",
+    "score": 0.0114,
+    "tier": "Watch",
+    "trend": [
+      0.0114,
+      0.0114,
+      0.0114,
+      0.0114,
+      0.0114,
+      0.0114
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": -0.703558,
+        "direction": "down"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 45,
+        "shap": -0.315776,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev amt ratio mean",
+        "feature": "PREV_AMT_RATIO_MEAN",
+        "impact": 37,
+        "shap": 0.262522,
+        "direction": "up"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 27,
+        "shap": -0.193172,
+        "direction": "down"
+      },
+      {
+        "label": "Consistently pays full installment amount",
+        "feature": "INST_PAY_RATIO_MEAN",
+        "impact": 26,
+        "shap": -0.179906,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev amt diff max",
+        "feature": "PREV_AMT_DIFF_MAX",
+        "impact": 21,
+        "shap": -0.147728,
+        "direction": "down"
+      },
+      {
+        "label": "Loan in line with item's value",
+        "feature": "CREDIT_GOODS_RATIO",
+        "impact": 16,
+        "shap": -0.115487,
+        "direction": "down"
+      },
+      {
+        "label": "Lower pos months count",
+        "feature": "POS_MONTHS_COUNT",
+        "impact": 16,
+        "shap": -0.115284,
+        "direction": "down"
+      },
+      {
+        "label": "Lower inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 14,
+        "shap": -0.1019,
+        "direction": "down"
+      },
+      {
+        "label": "Weakest external credit score is solid",
+        "feature": "EXT_MIN",
+        "impact": 13,
+        "shap": -0.093759,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-212320",
+    "score": 0.0069,
+    "tier": "Watch",
+    "trend": [
+      0.0069,
+      0.0069,
+      0.0069,
+      0.0069,
+      0.0069,
+      0.0069
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": -0.431559,
+        "direction": "down"
+      },
+      {
+        "label": "Combined external credit signals are strong",
+        "feature": "EXT_PROD",
+        "impact": 71,
+        "shap": -0.304926,
+        "direction": "down"
+      },
+      {
+        "label": "Higher flag work phone",
+        "feature": "FLAG_WORK_PHONE",
+        "impact": 41,
+        "shap": 0.178601,
+        "direction": "up"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 38,
+        "shap": -0.165389,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev annuity mean",
+        "feature": "PREV_ANNUITY_MEAN",
+        "impact": 38,
+        "shap": -0.162766,
+        "direction": "down"
+      },
+      {
+        "label": "Higher prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 32,
+        "shap": 0.13678,
+        "direction": "up"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 26,
+        "shap": -0.110455,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 21,
+        "shap": -0.089473,
+        "direction": "down"
+      },
+      {
+        "label": "Lower inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 21,
+        "shap": -0.088806,
+        "direction": "down"
+      },
+      {
+        "label": "Lower amt req credit bureau qrt",
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "impact": 17,
+        "shap": -0.074333,
+        "direction": "down"
+      }
+    ]
+  },
+  {
+    "id": "ACC-239963",
+    "score": 0.005,
+    "tier": "Watch",
+    "trend": [
+      0.005,
+      0.005,
+      0.005,
+      0.005,
+      0.005,
+      0.005
+    ],
+    "drivers": [
+      {
+        "label": "Above-average external credit score",
+        "feature": "EXT_MEAN",
+        "impact": 100,
+        "shap": -0.527995,
+        "direction": "down"
+      },
+      {
+        "label": "Combined external credit signals are strong",
+        "feature": "EXT_PROD",
+        "impact": 71,
+        "shap": -0.373605,
+        "direction": "down"
+      },
+      {
+        "label": "Short loan term",
+        "feature": "CREDIT_TERM",
+        "impact": 62,
+        "shap": -0.329216,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to employment history",
+        "feature": "EXT_X_EMPLOYED",
+        "impact": 34,
+        "shap": -0.177869,
+        "direction": "down"
+      },
+      {
+        "label": "Lower prev credit max",
+        "feature": "PREV_CREDIT_MAX",
+        "impact": 22,
+        "shap": -0.118668,
+        "direction": "down"
+      },
+      {
+        "label": "Lower name education type",
+        "feature": "NAME_EDUCATION_TYPE",
+        "impact": 21,
+        "shap": -0.110234,
+        "direction": "down"
+      },
+      {
+        "label": "Credit score solid relative to age",
+        "feature": "EXT_X_AGE",
+        "impact": 19,
+        "shap": -0.102861,
+        "direction": "down"
+      },
+      {
+        "label": "Lives in a more densely populated area",
+        "feature": "REGION_POPULATION_RELATIVE",
+        "impact": 18,
+        "shap": -0.093562,
+        "direction": "down"
+      },
+      {
+        "label": "High monthly repayment burden",
+        "feature": "ANNUITY_INCOME_RATIO",
+        "impact": 16,
+        "shap": 0.084016,
+        "direction": "up"
+      },
+      {
+        "label": "Lower inst late rate",
+        "feature": "INST_LATE_RATE",
+        "impact": 16,
+        "shap": -0.083545,
         "direction": "down"
       }
     ]

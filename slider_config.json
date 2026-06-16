@@ -1,26 +1,82 @@
-{
-  "DEBT_TO_CREDIT_RATIO": {
-    "index": 116,
+[
+  {
+    "feature": "EXT_MEAN",
+    "label": "External credit score (mean)",
     "min": 0.0,
-    "max": 9.206,
-    "p50": 0.5833333333333334
+    "max": 1.0,
+    "step": 0.01,
+    "default": 0.5244
   },
-  "INST_MAX_DAYS_LATE": {
-    "index": 127,
-    "min": -30.0,
-    "max": 2651.0,
-    "p50": 1.0
+  {
+    "feature": "INST_MEAN_LATE",
+    "label": "Avg days late on installments",
+    "min": 0.0,
+    "max": 30.0,
+    "step": 0.5,
+    "default": 0.0385
   },
-  "EXT_SOURCE_MEAN": {
-    "index": 109,
-    "min": 0.0005574712998839,
-    "max": 0.8549996664047012,
-    "p50": 0.5196289904068115
+  {
+    "feature": "CC_UTIL_MEAN",
+    "label": "Credit card utilisation (mean)",
+    "min": 0.0,
+    "max": 1.5,
+    "step": 0.05,
+    "default": 0.2524
   },
-  "CC_UTILITY_MEAN": {
-    "index": 125,
-    "min": -0.0028873759999999992,
-    "max": 1.2354005,
-    "p50": 0.25382456560105365
+  {
+    "feature": "BUR_DEBT_TO_CREDIT_RATIO",
+    "label": "Bureau debt-to-credit ratio",
+    "min": 0.0,
+    "max": 1.0,
+    "step": 0.05,
+    "default": 0.5843
+  },
+  {
+    "feature": "CREDIT_INCOME_RATIO",
+    "label": "Credit-to-income ratio",
+    "min": 0.0,
+    "max": 10.0,
+    "step": 0.1,
+    "default": 3.2651
+  },
+  {
+    "feature": "POS_STRESS_TREND",
+    "label": "POS stress trend (recent vs historical)",
+    "min": -0.5,
+    "max": 0.5,
+    "step": 0.05,
+    "default": 0.0
+  },
+  {
+    "feature": "CC_DRAW_TREND",
+    "label": "CC draw ratio trend (recent vs historical)",
+    "min": -0.5,
+    "max": 0.5,
+    "step": 0.05,
+    "default": -0.0116
+  },
+  {
+    "feature": "INST_LATE_TREND",
+    "label": "Installment late trend (recent vs historical)",
+    "min": -10.0,
+    "max": 10.0,
+    "step": 0.5,
+    "default": 0.0
+  },
+  {
+    "feature": "BB_STATUS_TREND",
+    "label": "Bureau status trend (recent vs historical)",
+    "min": -2.0,
+    "max": 2.0,
+    "step": 0.1,
+    "default": 0.0
+  },
+  {
+    "feature": "ANNUITY_INCOME_RATIO",
+    "label": "Annuity-to-income ratio",
+    "min": 0.0,
+    "max": 0.5,
+    "step": 0.01,
+    "default": 0.1628
   }
-}
+]

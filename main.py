@@ -14,6 +14,7 @@ Interactive docs at http://localhost:8000/docs
 """
 
 import json
+import os
 from pathlib import Path
 from typing import Optional
 
@@ -21,7 +22,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from inference import RiskModel, assign_tier
+from inference import RiskModel
 
 
 # ---------------------------------------------------------------------------
@@ -34,11 +35,19 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Allow the React dev server (and any origin, for the demo) to call this API.
+cors_allow_origins = [
+    origin.strip()
+    for origin in os.getenv("CORS_ALLOW_ORIGINS", "*").split(",")
+    if origin.strip()
+]
+cors_allow_credentials = os.getenv("CORS_ALLOW_CREDENTIALS", "false").lower() == "true"
+
+# One-tunnel ngrok usage is same-origin through Vite's /api proxy. If the
+# backend is exposed separately, set CORS_ALLOW_ORIGINS to the frontend ngrok URL.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=cors_allow_origins,
+    allow_credentials=cors_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -55,6 +64,13 @@ with open(DATA_PATH) as f:
 
 ACCOUNTS_BY_ID = {a["id"]: a for a in ACCOUNTS}
 
+# Tier thresholds, loaded independently of the live model so they're always
+# available to /api/portfolio/summary even if model artifacts are missing.
+with open(Path(__file__).parent / "tier_config.json") as f:
+    _TIER_CONFIG = json.load(f)
+NUDGE_THRESHOLD = _TIER_CONFIG["nudge_threshold"]
+INTERVENE_THRESHOLD = _TIER_CONFIG["intervene_threshold"]
+
 # Live model for the "what-if" slider (Path B). If the required files
 # aren't present, /api/predict and /api/sliders will return a 503 but
 # the rest of the API keeps working off the static demo data.
@@ -64,41 +80,15 @@ except FileNotFoundError as e:
     risk_model = None
     print(f"Live model not loaded ({e}). /api/predict and /api/sliders disabled.")
 
-# UI-friendly slider definitions: label, units, and a sensible display
-# range. DEBT_TO_CREDIT_RATIO and INST_MAX_DAYS_LATE have long-tailed
-# raw distributions, so the UI range is narrower than the model's
-# observed min/max -- the model can still score values outside this
-# range, but the slider stays meaningful for a demo.
-SLIDER_DISPLAY = {
-    "DEBT_TO_CREDIT_RATIO": {
-        "label": "Credit utilization (debt to credit ratio)",
-        "min": 0.0,
-        "max": 1.5,
-        "step": 0.01,
-        "unit": "ratio",
-    },
-    "INST_MAX_DAYS_LATE": {
-        "label": "Worst payment delay (days late)",
-        "min": -30,
-        "max": 90,
-        "step": 1,
-        "unit": "days",
-    },
-    "EXT_SOURCE_MEAN": {
-        "label": "External credit bureau score",
-        "min": 0.0,
-        "max": 0.86,
-        "step": 0.01,
-        "unit": "score",
-    },
-    "CC_UTILITY_MEAN": {
-        "label": "Average credit card utilization",
-        "min": 0.0,
-        "max": 1.2,
-        "step": 0.01,
-        "unit": "ratio",
-    },
-}
+# demo_accounts.json / the dashboard use "ACC-<SK_ID_CURR>" ids, but the live
+# model's baseline vectors are keyed by the raw SK_ID_CURR. Strip the prefix
+# before looking anything up against risk_model.
+ACCOUNT_ID_PREFIX = "ACC-"
+
+
+def to_raw_id(account_id: str) -> str:
+    return account_id.removeprefix(ACCOUNT_ID_PREFIX)
+
 
 ACTIONS = {
     "Watch": {
@@ -134,6 +124,8 @@ class Driver(BaseModel):
     label: str
     impact: int
     direction: str  # "up" or "down"
+    feature: Optional[str] = None
+    shap: Optional[float] = None
 
 
 class AccountSummary(BaseModel):
@@ -163,9 +155,15 @@ class TierStat(BaseModel):
     pct: int
 
 
+class TierThresholds(BaseModel):
+    nudge: float
+    intervene: float
+
+
 class PortfolioSummary(BaseModel):
     total_accounts: int
     tiers: dict[str, TierStat]
+    thresholds: TierThresholds
 
 
 class SliderDef(BaseModel):
@@ -174,7 +172,6 @@ class SliderDef(BaseModel):
     min: float
     max: float
     step: float
-    unit: str
     current: float
 
 
@@ -224,7 +221,11 @@ def portfolio_summary():
         for tier, count in tier_counts.items()
     }
 
-    return PortfolioSummary(total_accounts=total, tiers=tiers)
+    return PortfolioSummary(
+        total_accounts=total,
+        tiers=tiers,
+        thresholds=TierThresholds(nudge=NUDGE_THRESHOLD, intervene=INTERVENE_THRESHOLD),
+    )
 
 
 @app.get("/api/accounts", response_model=list[AccountSummary])
@@ -285,22 +286,23 @@ def get_sliders(account_id: str):
     if risk_model is None:
         raise HTTPException(status_code=503, detail="Live model not available")
 
-    if account_id not in risk_model.baselines:
+    raw_id = to_raw_id(account_id)
+    if raw_id not in risk_model.baselines:
         raise HTTPException(status_code=404, detail="Account not found")
 
-    vector = risk_model.baselines[account_id]
+    vector = risk_model.baselines[raw_id]["features"]
 
     sliders = []
-    for feature, display in SLIDER_DISPLAY.items():
+    for slider in risk_model.slider_config:
+        feature = slider["feature"]
         idx = risk_model.feature_index.get(feature)
-        current = float(vector[idx]) if idx is not None else display["min"]
+        current = float(vector[idx]) if idx is not None else slider["default"]
         sliders.append(SliderDef(
             feature=feature,
-            label=display["label"],
-            min=display["min"],
-            max=display["max"],
-            step=display["step"],
-            unit=display["unit"],
+            label=slider["label"],
+            min=slider["min"],
+            max=slider["max"],
+            step=slider["step"],
             current=current,
         ))
 
@@ -316,16 +318,15 @@ def predict(req: PredictRequest):
     if risk_model is None:
         raise HTTPException(status_code=503, detail="Live model not available")
 
-    result = risk_model.predict(req.account_id, overrides=req.overrides)
+    result = risk_model.predict(to_raw_id(req.account_id), overrides=req.overrides)
     if result is None:
         raise HTTPException(status_code=404, detail="Account not found")
 
-    score, drivers = result
-    tier = assign_tier(score)
+    score, tier, drivers = result
 
     return PredictResponse(
         id=req.account_id,
-        score=round(score, 2),
+        score=round(score, 4),
         tier=tier,
         drivers=[Driver(**d) for d in drivers],
         action=Action(**ACTIONS[tier]),

@@ -79,6 +79,10 @@ class TestPortfolioSummary:
         for tier in tiers.values():
             assert tier["pct"] <= 100
 
+    def test_thresholds_present_and_ordered(self):
+        thresholds = client.get("/api/portfolio/summary").json()["thresholds"]
+        assert 0.0 < thresholds["nudge"] < thresholds["intervene"] < 1.0
+
 
 # ---------------------------------------------------------------------------
 # GET /api/accounts
@@ -182,16 +186,24 @@ class TestSlidersNoModel:
 # GET /api/sliders/{account_id}  — model present
 # ---------------------------------------------------------------------------
 
+RAW_VALID_ID = VALID_ID.removeprefix("ACC-")
+
+SLIDER_FEATURES = ["EXT_MEAN", "INST_MEAN_LATE", "CC_UTIL_MEAN", "BUR_DEBT_TO_CREDIT_RATIO"]
+
+
 @pytest.fixture
 def mock_risk_model():
     model = MagicMock()
-    model.baselines = {VALID_ID: [0.5, 0.3, 15.0, 0.4] + [0.0] * 6}
-    model.feature_index = {
-        "DEBT_TO_CREDIT_RATIO": 0,
-        "EXT_SOURCE_MEAN": 1,
-        "INST_MAX_DAYS_LATE": 2,
-        "CC_UTILITY_MEAN": 3,
+    model.baselines = {
+        RAW_VALID_ID: {"features": [0.5, 0.3, 15.0, 0.4], "tier": "Nudge", "score": 0.06},
     }
+    model.feature_index = {name: i for i, name in enumerate(SLIDER_FEATURES)}
+    model.slider_config = [
+        {"feature": "EXT_MEAN", "label": "External credit score (mean)", "min": 0.0, "max": 1.0, "step": 0.01, "default": 0.5},
+        {"feature": "INST_MEAN_LATE", "label": "Avg days late on installments", "min": 0.0, "max": 30.0, "step": 0.5, "default": 0.0},
+        {"feature": "CC_UTIL_MEAN", "label": "Credit card utilisation (mean)", "min": 0.0, "max": 1.5, "step": 0.05, "default": 0.25},
+        {"feature": "BUR_DEBT_TO_CREDIT_RATIO", "label": "Bureau debt-to-credit ratio", "min": 0.0, "max": 1.0, "step": 0.05, "default": 0.4},
+    ]
     return model
 
 
@@ -200,14 +212,14 @@ class TestSlidersWithModel:
         monkeypatch.setattr(app_module, "risk_model", mock_risk_model)
         assert client.get(f"/api/sliders/{VALID_ID}").status_code == 200
 
-    def test_returns_four_sliders(self, monkeypatch, mock_risk_model):
+    def test_returns_sliders_for_every_configured_feature(self, monkeypatch, mock_risk_model):
         monkeypatch.setattr(app_module, "risk_model", mock_risk_model)
         sliders = client.get(f"/api/sliders/{VALID_ID}").json()
-        assert len(sliders) == 4
+        assert len(sliders) == len(mock_risk_model.slider_config)
 
     def test_each_slider_has_required_fields(self, monkeypatch, mock_risk_model):
         monkeypatch.setattr(app_module, "risk_model", mock_risk_model)
-        required = {"feature", "label", "min", "max", "step", "unit", "current"}
+        required = {"feature", "label", "min", "max", "step", "current"}
         for s in client.get(f"/api/sliders/{VALID_ID}").json():
             assert required.issubset(s.keys())
 
@@ -240,8 +252,9 @@ class TestPredictNoModel:
 def predicting_model():
     model = MagicMock()
     model.predict.return_value = (
-        0.45,
-        [{"label": "High credit utilization", "impact": 80, "direction": "up"}],
+        0.061234,
+        "Nudge",
+        [{"label": "High credit utilization", "feature": "BUR_DEBT_TO_CREDIT_RATIO", "impact": 80, "shap": 0.02, "direction": "up"}],
     )
     return model
 
@@ -264,9 +277,9 @@ class TestPredictWithModel:
 
     def test_overrides_are_forwarded_to_model(self, monkeypatch, predicting_model):
         monkeypatch.setattr(app_module, "risk_model", predicting_model)
-        overrides = {"DEBT_TO_CREDIT_RATIO": 0.9}
+        overrides = {"BUR_DEBT_TO_CREDIT_RATIO": 0.9}
         client.post("/api/predict", json={"account_id": VALID_ID, "overrides": overrides})
-        predicting_model.predict.assert_called_once_with(VALID_ID, overrides=overrides)
+        predicting_model.predict.assert_called_once_with(RAW_VALID_ID, overrides=overrides)
 
     def test_missing_account_returns_404(self, monkeypatch):
         model = MagicMock()
@@ -275,7 +288,7 @@ class TestPredictWithModel:
         r = client.post("/api/predict", json={"account_id": MISSING_ID, "overrides": {}})
         assert r.status_code == 404
 
-    def test_score_is_rounded_to_two_decimals(self, monkeypatch, predicting_model):
+    def test_score_is_rounded_to_four_decimals(self, monkeypatch, predicting_model):
         monkeypatch.setattr(app_module, "risk_model", predicting_model)
         score = client.post("/api/predict", json={"account_id": VALID_ID, "overrides": {}}).json()["score"]
-        assert round(score, 2) == score
+        assert round(score, 4) == score
